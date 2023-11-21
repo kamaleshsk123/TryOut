@@ -1,0 +1,495 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+// Enable preflight requests
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.options("*", cors());
+app.use(express.static("public")); // assuming your files are in a 'public' folder
+app.use(express.json());
+
+// MongoDB connection
+mongoose.connect("mongodb://localhost:27017/TryOut", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Common schema
+const commonSchema = new mongoose.Schema({
+  reeferMotionStatus: String,
+  reeferStatus: String,
+  lastReportedTime: Date,
+  alertStatus: String,
+  batteryStatus: String,
+  lastKnownLocation: {
+    latitude: String,
+    longitude: String,
+  },
+});
+
+const CommonModel = mongoose.model("Common", commonSchema);
+
+module.exports = CommonModel;
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Common data
+app.post("/common", async (req, res) => {
+  try {
+    const commonData = req.body;
+    // console.log("Received Common Data", commonData);
+    await saveCommonData(commonData);
+    res.send("Common data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// Function to save Common data
+// Function to check if an object is empty
+const isEmpty = (obj) => {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      return false;
+    }
+  }
+  return true;
+};
+
+// Then use it in your saveCommonData function
+const saveCommonData = async (commonData) => {
+  try {
+    // console.log("Received Common Data in saveCommonData:", commonData);
+
+    // Add a check to see if commonData is not empty
+    if (!isEmpty(commonData)) {
+      const common = new CommonModel(commonData.commonData); // Change this line
+
+      // Log the common data just before saving
+      //   console.log("Common Data before saving:", common.toObject()); // Change this line
+
+      try {
+        const savedData = await common.save();
+        console.log("Common Data saved successfully :", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Common data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Common Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveCommonData function:", error);
+    throw error;
+  }
+};
+
+// Add routes for other types of data (Inventory, Temperature, Set Operation, etc.)
+
+// Function to save Inventory data
+
+// Add similar routes for Temperature, Set Operation, Supply, Return, Utilization, and Inventory-1 data
+
+// inventory
+
+const inventorySchema = new mongoose.Schema({
+  tags: String,
+  commodity: String,
+});
+
+const InventoryModel = mongoose.model("Inventory", inventorySchema);
+
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Inventory data
+app.post("/inventory", async (req, res) => {
+  try {
+    const inventoryData = req.body;
+    console.log("Received Inventory Data", inventoryData);
+    await saveInventoryData(inventoryData);
+    res.send("Inventory data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const saveInventoryData = async (inventoryData) => {
+  try {
+    // console.log("Received Common Data in saveCommonData:", commonData);
+
+    // Add a check to see if commonData is not empty
+    if (!isEmpty(inventoryData)) {
+      const inventory = new InventoryModel(inventoryData.inventoryData); // Change this line
+
+      // Log the common data just before saving
+      //   console.log("Common Data before saving:", common.toObject()); // Change this line
+
+      try {
+        const savedData = await inventory.save();
+        console.log("Inventory Data saved successfully :", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Inventory data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Inventory Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveInventoryData function:", error);
+    throw error;
+  }
+};
+
+//set-operation
+
+const setOperationSchema = new mongoose.Schema({
+  ambientTemperature: String,
+  operationModeP: String,
+  operationHoursP: String,
+  operationModeS: String,
+  operationHoursS: String,
+  // Add other fields as needed
+});
+
+const SetOperationModel = mongoose.model("SetOperation", setOperationSchema);
+
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Set Operation data
+app.post("/setOperation", async (req, res) => {
+  try {
+    const setOperationData = req.body;
+    console.log("Received Set Operation Data", setOperationData);
+    await saveSetOperationData(setOperationData);
+    res.send("Set Operation data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const saveSetOperationData = async (setOperationData) => {
+  try {
+    // Add a check to see if setOperationData is not empty
+    if (!isEmpty(setOperationData)) {
+      const setOperation = new SetOperationModel(
+        setOperationData.setOperationData
+      );
+
+      // Log the set operation data just before saving
+      try {
+        const savedData = await setOperation.save();
+        console.log("Set Operation Data saved successfully:", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Set Operation data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Set Operation Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveSetOperationData function:", error);
+    throw error;
+  }
+};
+
+// utilization
+
+const utilizationSchema = new mongoose.Schema({
+  fuelLevel: String,
+  // Add other fields as needed
+});
+
+const UtilizationModel = mongoose.model("Utilization", utilizationSchema);
+
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Utilization data
+app.post("/utilization", async (req, res) => {
+  try {
+    const utilizationData = req.body;
+    console.log("Received Utilization Data", utilizationData);
+    await saveUtilizationData(utilizationData);
+    res.send("Utilization data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const saveUtilizationData = async (utilizationData) => {
+  try {
+    // Add a check to see if utilizationData is not empty
+    if (!isEmpty(utilizationData)) {
+      const utilization = new UtilizationModel(utilizationData.utilizationData);
+
+      // Log the utilization data just before saving
+      try {
+        const savedData = await utilization.save();
+        console.log("Utilization Data saved successfully:", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Utilization data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Utilization Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveUtilizationData function:", error);
+    throw error;
+  }
+};
+
+// inventory1
+
+const inventory1Schema = new mongoose.Schema({
+  ingress: String,
+  deviceModel: String,
+  organizationName: String,
+  deviceID: String,
+  accountName: String,
+  batteryLevel: String,
+  // Add other fields as needed
+});
+
+const Inventory1Model = mongoose.model("Inventory1", inventory1Schema);
+
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Inventory1 data
+app.post("/inventory1", async (req, res) => {
+  try {
+    const inventory1Data = req.body;
+    console.log("Received Inventory1 Data", inventory1Data);
+    await saveInventory1Data(inventory1Data);
+    res.send("Inventory1 data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const saveInventory1Data = async (inventory1Data) => {
+  try {
+    // Add a check to see if inventory1Data is not empty
+    if (!isEmpty(inventory1Data)) {
+      const inventory1 = new Inventory1Model(inventory1Data.inventory1Data);
+
+      // Log the inventory1 data just before saving
+      try {
+        const savedData = await inventory1.save();
+        console.log("Inventory1 Data saved successfully:", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Inventory1 data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Inventory1 Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveInventory1Data function:", error);
+    throw error;
+  }
+};
+
+// supply
+
+const supplySchema = new mongoose.Schema({
+  supplyTemperatureMax: String,
+  supplyTemperatureMin: String,
+  supplyTemperatureMean: String,
+  // Add other fields as needed
+});
+
+const SupplyModel = mongoose.model("Supply", supplySchema);
+
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Supply data
+app.post("/supply", async (req, res) => {
+  try {
+    const supplyData = req.body;
+    console.log("Received Supply Data", supplyData);
+    await saveSupplyData(supplyData);
+    res.send("Supply data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const saveSupplyData = async (supplyData) => {
+  try {
+    // Add a check to see if supplyData is not empty
+    if (!isEmpty(supplyData)) {
+      const supply = new SupplyModel(supplyData.supplyData);
+
+      // Log the supply data just before saving
+      try {
+        const savedData = await supply.save();
+        console.log("Supply Data saved successfully:", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Supply data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Supply Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveSupplyData function:", error);
+    throw error;
+  }
+};
+
+// return
+
+const returnSchema = new mongoose.Schema({
+  returnTemperatureMax: String,
+  returnTemperatureMin: String,
+  returnTemperatureMean: String,
+  // Add other fields as needed
+});
+
+const ReturnModel = mongoose.model("Return", returnSchema);
+
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Return data
+app.post("/return", async (req, res) => {
+  try {
+    const returnData = req.body;
+    console.log("Received Return Data", returnData);
+    await saveReturnData(returnData);
+    res.send("Return data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const saveReturnData = async (returnData) => {
+  try {
+    // Add a check to see if returnData is not empty
+    if (!isEmpty(returnData)) {
+      const returnEntry = new ReturnModel(returnData.returnData);
+
+      // Log the return data just before saving
+      try {
+        const savedData = await returnEntry.save();
+        console.log("Return Data saved successfully:", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Return data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Return Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveReturnData function:", error);
+    throw error;
+  }
+};
+
+// temperature
+
+const temperatureSchema = new mongoose.Schema({
+  system: String, // Add this line to include the system information
+  setPointTemperatureP: String,
+  returnTemperatureP: String,
+  supplyTemperatureP: String,
+  setPointTemperatureS: String,
+  returnTemperatureS: String,
+  supplyTemperatureS: String,
+  // Add other fields as needed
+});
+
+const TemperatureModel = mongoose.model("Temperature", temperatureSchema);
+
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
+
+// Route to handle Temperature data
+app.post("/temperature", async (req, res) => {
+  try {
+    const temperatureData = req.body;
+    console.log("Received Temperature Data", temperatureData);
+    await saveTemperatureData(temperatureData);
+    res.send("Temperature data saved!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const saveTemperatureData = async (temperatureData) => {
+  try {
+    // Add a check to see if temperatureData is not empty
+    if (!isEmpty(temperatureData)) {
+      const temperature = new TemperatureModel(temperatureData.temperatureData);
+
+      // Log the temperature data just before saving
+      try {
+        const savedData = await temperature.save();
+        console.log("Temperature Data saved successfully:", savedData);
+      } catch (saveError) {
+        if (saveError.name === "ValidationError") {
+          console.error("Validation Error during save:", saveError.errors);
+        } else {
+          console.error("Error saving Temperature data:", saveError);
+        }
+        throw saveError; // Rethrow the error to propagate it to the calling function
+      }
+    } else {
+      console.log("Temperature Data is empty. Not saving.");
+    }
+  } catch (error) {
+    console.error("Error in saveTemperatureData function:", error);
+    throw error;
+  }
+};
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

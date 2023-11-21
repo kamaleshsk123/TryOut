@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>TryOut</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/pikaday@1.8.0/pikaday.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/7725c8cc07.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="bg-[#EDEDE9]">
+    <!-- nav   -->
+
+    <nav class="sticky top-0 z-[2]">
+      <section class="w-full h-16 flex bg-[#D5BDAF] border-2 border-white">
+        <div class="flex w-1/2">
+          <h3 class="pl-20 m-3 text-3xl font-semibold text-white logo">Logo</h3>
+          <div class="relative flex">
+            <input
+              type="text"
+              class="mt-3 mb-3 ml-24 font-semibold text-center text-black rounded-full search input"
+              name="text"
+              autocomplete="off"
+              placeholder="Search"
+            />
+            <button
+              type="submit"
+              class="absolute right-4 top-[1.2em] text-[#a5a58d]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <g fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="7" />
+                  <path stroke-linecap="round" d="m20 20l-3-3" />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="relative inline-block mt-4 ml-[40em]">
+            <div class="cursor-pointer" onclick="toggleNotificationDropdown()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="cursor-pointer"
+              >
+                <path
+                  fill="white"
+                  d="M21 6.5c0 1.93-1.57 3.5-3.5 3.5S14 8.43 14 6.5S15.57 3 17.5 3S21 4.57 21 6.5m-2 5.29c-.5.13-1 .21-1.5.21A5.51 5.51 0 0 1 12 6.5c0-1.47.58-2.8 1.5-3.79A1.93 1.93 0 0 0 12 2c-1.1 0-2 .9-2 2v.29C7.03 5.17 5 7.9 5 11v6l-2 2v1h18v-1l-2-2v-5.21M12 23c1.11 0 2-.89 2-2h-4a2 2 0 0 0 2 2Z"
+                />
+              </svg>
+            </div>
+            <div
+              id="notificationDropdown"
+              class="hidden absolute z-[1] font-medium background border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
+            >
+              <a
+                href="#noNotification"
+                class="block px-4 py-3 text-gray-800 hover:background"
+                onclick="showNoNotification()"
+              >
+                No Notification
+              </a>
+            </div>
+          </div>
+
+          <div class="flex mt-1.5 ml-7">
+            <img
+              src="images/hero.png"
+              alt="Image"
+              class="rounded-image h-12 w-12 cursor-pointer border-2 border-[#EDEDE9]"
+            />
+            <h2
+              class="ml-3 cursor-pointer font-extrabold mt-2 text-[20px] text-white"
+            >
+              Name
+            </h2>
+            <button id="dropdownButton" class="mt-[-4px]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="ml-16"
+              >
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                  />
+                  <path
+                    fill="white"
+                    d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <div
+              id="dropdown"
+              class="absolute hidden p-4 mt-2 border border-gray-300 rounded-md shadow-md right-3 background top-12"
+            ></div>
+          </div>
+        </div>
+      </section>
+    </nav>
+
+    <!-- side nav  -->
+
+    <section
+      class="h-full w-60 fixed border-2 border-white top-0 left-0 bg-[#E3D5CA]"
+    >
+      <div class="pb-5 pl-5 mt-20 border-b-2 border-black border-white">
+        <div class="mb-5">
+          <a
+            href="#common"
+            class="font-extrabold hover:text-[#1a759f] text-white text-[22px] logo"
+            >Common</a
+          >
+        </div>
+        <div class="mb-5">
+          <a
+            href="#inventeryview"
+            class="font-extrabold hover:text-[#1a759f] text-white text-[22px] logo"
+            >Inventery View</a
+          >
+        </div>
+        <div class="mb-5">
+          <a
+            href="#temperatureview"
+            class="font-extrabold hover:text-[#1a759f] text-white text-[22px] logo"
+            >Temperature View</a
+          >
+        </div>
+        <div class="mb-5">
+          <a
+            href="#setoperation"
+            class="font-extrabold hover:text-[#1a759f] text-white text-[22px] logo"
+            >Set Operation</a
+          >
+        </div>
+
+        <div class="mb-5">
+          <a
+            href="#supply"
+            class="font-extrabold hover:text-[#1a759f] text-white text-[22px] logo"
+            >Supply</a
+          >
+        </div>
+        <div class="mb-5">
+          <a
+            href="#Utilization"
+            class="font-extrabold hover:text-[#1a759f] text-white pb-3 text-[22px] logo"
+            >Utilization</a
+          >
+        </div>
+        <div class="mb-5">
+          <a
+            href="#inventory"
+            class="font-extrabold hover:text-[#1a759f] text-white text-[22px] logo"
+            >Inventory</a
+          >
+        </div>
+      </div>
+      <div class="mt-[25em] ml-3">
+        <button
+          class="p-4 text-lg transition-all font-semibold tracking-wider hover:border-white hover:text-white hover:bg-[#073b4c] text-[#073b4c] border-[#6B9080] background border-2 rounded-full w-52 pl-9 pr-9 logo"
+        >
+          Log Out
+        </button>
+      </div>
+    </section>
+
+    <!-- constant -->
+    <section class="ml-[17em] mt-4 container h-[23em]" id="constant">
+      <div class="mt-4 ml-4">
+        <h2 class="logo text-[25px] text-[#6B9080]">Data Section</h2>
+        <div class="flex">
+          <div class="w-1/2 ml-20">
+            <div class="flex mt-5 ml-5">
+              <label
+                class="logo text-[20px] mt-3 text-[#073b4c]"
+                for="gatewayId"
+                >Gateway ID :</label
+              >
+              <div class="relative inline-block mt-2 ml-3">
+                <input
+                  class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-text border-gray-300 focus:outline-none"
+                  id="gatewayId"
+                  type="text"
+                  placeholder="Gateway ID"
+                />
+              </div>
+            </div>
+            <div class="flex mt-5 ml-[2.6em]">
+              <label class="logo text-[20px] mt-3 text-[#073b4c]" for="deviceid"
+                >Device ID :</label
+              >
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  class="px-4 py-2 rounded-2xl background2 text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  id="deviceid"
+                  type="text"
+                  placeholder="Device ID"
+                />
+              </div>
+            </div>
+            <div class="flex mt-5 ml-[3.7em]">
+              <label class="logo text-[20px] mt-3 text-[#073b4c]" for="system"
+                >System :</label
+              >
+              <div class="relative inline-block mt-2 ml-3">
+                <input
+                  class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-text border-gray-300 focus:outline-none"
+                  id="system"
+                  type="text"
+                  placeholder="System"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 mt-5">
+            <div class="flex justify-center ml-20">
+              <label class="logo text-[20px] mt-3 text-[#073b4c]" for="esn"
+                >ESN :</label
+              >
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  class="px-4 py-2 rounded-2xl background1 alert text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  id="esn"
+                  type="text"
+                  placeholder="ESN"
+                />
+              </div>
+            </div>
+            <div class="flex justify-center mt-5">
+              <label
+                class="logo text-[20px] mt-3 text-[#073b4c]"
+                for="lasttxtime"
+                >Last TX Time :</label
+              >
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  class="px-4 py-2 rounded-2xl background3 text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  id="lasttxtime"
+                  type="text"
+                  placeholder="Last TX Time"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Input fields for editable data -->
+      </div>
+    </section>
+    <!-- Common -->
+
+    <section class="ml-[17em] mt-4 container h-[23em]" id="common">
+      <div class="mt-4 ml-4">
+        <h2 class="logo text-[25px] text-[#6B9080]">Common</h2>
+        <div class="flex">
+          <div class="w-1/2 ml-20">
+            <div class="flex mt-5 ml-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Reefer Motion Status :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="reeferMotionStatusInput"
+                  class="px-4 py-2 rounded-2xl background common text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                  onclick="toggleDropdown0()"
+                  placeholder="Reefer Motion Status"
+                  readonly
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                      />
+                      <path
+                        fill="#6B9080"
+                        d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="dropdown-content0 z-[1] absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
+                >
+                  <a
+                    href="#motion"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption0(this)"
+                    >MOTION</a
+                  >
+                  <a
+                    href="#off1"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption0(this)"
+                    >OFF</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex mt-5 ml-[5.4em]">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Reefer Status :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="reeferStatusInput"
+                  class="px-4 py-2 rounded-2xl background2 text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                  onclick="toggleDropdown2()"
+                  placeholder="Reefer Status"
+                  readonly
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                      />
+                      <path
+                        fill="#6B9080"
+                        d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="dropdown-content2 z-[1] absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
+                >
+                  <a
+                    href="#on2"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption2(this)"
+                    >ON</a
+                  >
+                  <a
+                    href="#off2"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption2(this)"
+                    >OFF</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex mt-5 ml-[2.1em]">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Last Reported Time :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3">
+                <input
+                  id="datepicker"
+                  class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-pointer border-gray-300 focus:outline-none"
+                  placeholder="Select a date"
+                  readonly
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                      />
+                      <path
+                        fill="#6B9080"
+                        d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2">
+            <div class="flex justify-center ml-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Alert Status :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="alertStatusInput"
+                  class="px-4 py-2 rounded-2xl background1 alert text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                  onclick="toggleDropdown1()"
+                  placeholder="Motion Status"
+                  readonly
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                      />
+                      <path
+                        fill="#6B9080"
+                        d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="dropdown-content1 z-[1] absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
+                >
+                  <a
+                    href="#on3"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption1(this)"
+                    >ON</a
+                  >
+                  <a
+                    href="#off3"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption1(this)"
+                    >OFF</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-center mt-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Battery Status :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="batteryStatusInput"
+                  class="px-4 py-2 rounded-2xl background3 text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                  onclick="toggleDropdown3()"
+                  placeholder="Battery Status"
+                  readonly
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                      />
+                      <path
+                        fill="#6B9080"
+                        d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content3"
+                >
+                  <a
+                    href="#on4"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption3(this)"
+                    >ON</a
+                  >
+                  <a
+                    href="#off4"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption3(this)"
+                    >OFF</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 ml-[6.5em]">
+              <div class="flex">
+                <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                  Last Known Location :
+                </h3>
+                <div class="relative inline-block mt-2 ml-3">
+                  <input
+                    id="latitudeInput"
+                    class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-text border-gray-300 focus:outline-none"
+                    placeholder="Enter Latitude"
+                  />
+                </div>
+              </div>
+              <div class="relative inline-block mt-7 ml-[13em]">
+                <input
+                  id="longitudeInput"
+                  type=""
+                  class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-text border-gray-300 focus:outline-none"
+                  placeholder="Enter longitude"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inventery View -->
+
+    <section
+      class="ml-[17em] mt-4 container relative z-[1] h-[12em]"
+      id="inventeryview"
+    >
+      <div class="mt-4 ml-4">
+        <h2 class="logo text-[25px] text-[#6B9080]">Inventery View</h2>
+        <div class="flex mt-4">
+          <div class="w-1/2 ml-48">
+            <div class="flex ml-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Add Tags :</h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="tagsInput"
+                  class="px-4 py-2 rounded-lg background inventery text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  placeholder="Add Tags"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2">
+            <div class="flex justify-center">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Commidity :</h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="commodityInput"
+                  class="px-4 py-2 rounded-2xl back commidity text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                  onclick="toggleDropdown4()"
+                  placeholder="Enter Commidity"
+                  readonly
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                      />
+                      <path
+                        fill="#6B9080"
+                        d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content4"
+                >
+                  <a
+                    href="#chemical"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption4(this)"
+                    >CHEMICAL</a
+                  >
+                  <a
+                    href="#oil"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption4(this)"
+                    >OIL</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Temperature View  -->
+
+    <section class="ml-[17em] mt-4 z-0 container pb-14" id="temperatureview">
+      <div class="mt-4 ml-4">
+        <h2 class="logo text-[25px] text-[#6B9080]">Temperature View</h2>
+        <div class="flex ml-36">
+          <h3 class="logo text-[20px] mt-7 mb-7 text-[#073b4c]">
+            Primary System
+          </h3>
+          <div class="flex mt-2 font-medium space-x-28 ml-28">
+            <label class="inline-flex items-center">
+              <input
+                type="radio"
+                id="systemInput"
+                class="form-radio text-[#689080] focus:ring-[#6B9080] h-4 w-4"
+                name="group"
+                value="System 1"
+                checked
+              />
+              <span class="ml-2 text-[#2c7da0] text-[19px] logo1 tracking-wide"
+                >System 1</span
+              >
+            </label>
+
+            <label class="inline-flex items-center">
+              <input
+                type="radio"
+                id="systemInput1"
+                class="form-radio text-[#689080] focus:ring-[#6B9080] h-4 w-4"
+                name="group"
+                value="System 2"
+              />
+              <span class="ml-2 text-[#2c7da0] logo1 text-[19px] tracking-wide"
+                >System 2</span
+              >
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- Primary System -->
+      <div class="ml-20">
+        <h2 class="logo text-[23px] text-[#6B9080]">Primary System</h2>
+        <div class="flex mt-5">
+          <div class="flex ml-10">
+            <h3
+              class="mt-5 text-[#073b4c] logo text-[18px] tracking-wider font-extrabold"
+            >
+              Set Point Temperature :
+            </h3>
+            <input
+              type="text"
+              id="setPointTemperatureInput"
+              class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+              placeholder="in ` C"
+            />
+            <h3
+              class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+            >
+              C
+            </h3>
+          </div>
+
+          <div class="flex ml-36">
+            <h3
+              class="mt-5 text-[#073b4c] logo text-[18px] tracking-wider font-extrabold"
+            >
+              Return Temperature :
+            </h3>
+            <input
+              type="text"
+              id="returnTemperatureInput"
+              class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+              placeholder="in ` C"
+            />
+            <h3
+              class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+            >
+              C
+            </h3>
+          </div>
+          <div class="flex ml-28">
+            <h3
+              class="mt-5 text-[#073b4c] logo text-[18px] tracking-wider font-extrabold"
+            >
+              Supply Temperature :
+            </h3>
+            <input
+              type="text"
+              id="supplyTemperatureInput"
+              class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+              placeholder="in ` C"
+            />
+            <h3
+              class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+            >
+              C
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary System  -->
+
+      <div class="ml-20 mt-7">
+        <h2 class="logo text-[23px] text-[#6B9080]">Secondary System</h2>
+        <div class="flex">
+          <div class="flex mt-5 ml-10">
+            <h3
+              class="mt-5 text-[#073b4c] logo text-[18px] tracking-wider font-extrabold"
+            >
+              Set Point Temperature :
+            </h3>
+            <input
+              type="text"
+              id="setPointTemperatureInput1"
+              class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+              placeholder="in ` C"
+            />
+            <h3
+              class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+            >
+              C
+            </h3>
+          </div>
+
+          <div class="flex mt-5 ml-36">
+            <h3
+              class="mt-5 text-[#073b4c] logo text-[18px] tracking-wider font-extrabold"
+            >
+              Return Temperature :
+            </h3>
+            <input
+              type="text"
+              id="returnTemperatureInput1"
+              class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+              placeholder="in ` C"
+            />
+            <h3
+              class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+            >
+              C
+            </h3>
+          </div>
+
+          <div class="flex mt-5 ml-28">
+            <h3
+              class="mt-5 text-[#073b4c] logo text-[18px] tracking-wider font-extrabold"
+            >
+              Supply Temperature :
+            </h3>
+            <input
+              type="text"
+              id="supplyTemperatureInput1"
+              class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+              placeholder="in ` C"
+            />
+            <h3
+              class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+            >
+              C
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Set Operation -->
+
+    <section class="ml-[17em] mt-4 container pb-14" id="setoperation">
+      <div class="mt-4 ml-4">
+        <h2 class="logo text-[25px] text-[#6B9080]">Set Operation</h2>
+        <div class="mt-4">
+          <div class="ml-10">
+            <div class="flex ml-10">
+              <h3
+                class="mt-5 text-[#073b4c] logo text-[20px] tracking-wider font-extrabold"
+              >
+                Ambient Temperature :
+              </h3>
+              <input
+                id="ambientTemperatureInput"
+                type="text"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                placeholder="in ` C"
+              />
+              <h3
+                class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                C
+              </h3>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-1/2 mt-5">
+              <div class="flex justify-center ml-[-2.5em]">
+                <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                  Operation Mode (P) :
+                </h3>
+                <div class="relative inline-block mt-2 ml-3 text-left">
+                  <input
+                    type="text"
+                    id="operationModePInput"
+                    class="px-4 py-2 rounded-2xl back operation-p text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                    onclick="toggleDropdown5()"
+                    placeholder="Operation Mode"
+                    readonly
+                  />
+                  <div
+                    class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <g fill="none" fill-rule="evenodd">
+                        <path
+                          d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                        />
+                        <path
+                          fill="#6B9080"
+                          d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <div
+                    class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content5"
+                  >
+                    <a
+                      href="#cooling"
+                      class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                      onclick="selectOption5(this)"
+                      >COOLING</a
+                    >
+                    <a
+                      href="#waiting"
+                      class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                      onclick="selectOption5(this)"
+                      >WAITING</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-center mt-5 ml-[-12em]">
+                <h3 class="logo text-[20px] mt-5 text-[#073b4c]">
+                  Operation Hours (P) :
+                </h3>
+                <input
+                  type="text"
+                  id="operationHoursPInput"
+                  class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                  placeholder="in ` C"
+                />
+                <h3
+                  class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+                >
+                  C
+                </h3>
+              </div>
+            </div>
+            <div class="w-1/2 mt-5">
+              <div class="flex justify-center ml-[-2.5em]">
+                <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                  Operation Mode (S) :
+                </h3>
+                <div class="relative inline-block mt-2 ml-3 text-left">
+                  <input
+                    type="text"
+                    id="operationModeSInput"
+                    class="px-4 py-2 rounded-2xl back operation-s text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                    onclick="toggleDropdown6()"
+                    placeholder="Operation Mode"
+                    readonly
+                  />
+                  <div
+                    class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <g fill="none" fill-rule="evenodd">
+                        <path
+                          d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                        />
+                        <path
+                          fill="#6B9080"
+                          d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <div
+                    class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content6"
+                  >
+                    <a
+                      href="#coolings"
+                      class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                      onclick="selectOption6(this)"
+                      >COOLING</a
+                    >
+                    <a
+                      href="#waitings"
+                      class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                      onclick="selectOption6(this)"
+                      >WAITING</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-center mt-5 ml-[-12em]">
+                <h3 class="logo text-[20px] mt-5 text-[#073b4c]">
+                  Operation Hours (S) :
+                </h3>
+                <input
+                  type="text"
+                  id="operationHoursSInput"
+                  class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                  placeholder="in ` C"
+                />
+                <h3
+                  class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+                >
+                  C
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- supply -->
+
+    <section class="ml-[17em] flex mt-4" id="supply">
+      <!-- supply  -->
+
+      <section class="mr-5 container relative w-1/2 z-[1] pb-10">
+        <div class="mt-4 ml-7">
+          <h2 class="logo text-[25px] text-[#6B9080]">Supply</h2>
+          <div class="mt-4 ml-20">
+            <div class="flex ml-9">
+              <h3
+                class="mt-5 text-[#073b4c] logo text-[20px] tracking-wider font-extrabold"
+              >
+                Supply Temperature MAX :
+              </h3>
+              <input
+                type="text"
+                id="supplyTemperatureMaxInput"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                placeholder="in ` C"
+              />
+              <h3
+                class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                C
+              </h3>
+            </div>
+            <div class="flex mt-5 ml-10">
+              <h3
+                class="mt-5 text-[#073b4c] logo text-[20px] tracking-wider font-extrabold"
+              >
+                Supply Temperature MIN :
+              </h3>
+              <input
+                type="text"
+                id="supplyTemperatureMinInput"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                placeholder="in ` C"
+              />
+              <h3
+                class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                C
+              </h3>
+            </div>
+            <div class="flex mt-5 ml-5">
+              <h3
+                class="mt-5 text-[#073b4c] logo text-[20px] tracking-wider font-extrabold"
+              >
+                Supply Temperature MEAN :
+              </h3>
+              <input
+                type="text"
+                id="supplyTemperatureMeanInput"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                placeholder="in ` C"
+              />
+              <h3
+                class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                C
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- return  -->
+
+      <section class="ml-7 mr-16 container relative w-1/2 z-[1] pb-10">
+        <div class="mt-4 ml-4">
+          <h2 class="logo text-[25px] text-[#6B9080]">Return</h2>
+          <div class="mt-4 ml-20">
+            <div class="flex ml-8">
+              <h3
+                class="mt-5 text-[#073b4c] logo text-[20px] tracking-wider font-extrabold"
+              >
+                Return Temperature MAX :
+              </h3>
+              <input
+                type="text"
+                id="returnTemperatureMaxInput"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                placeholder="in ` C"
+              />
+              <h3
+                class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                C
+              </h3>
+            </div>
+            <div class="flex mt-5 ml-10">
+              <h3
+                class="mt-5 text-[#073b4c] logo text-[20px] tracking-wider font-extrabold"
+              >
+                Return Temperature MIN :
+              </h3>
+              <input
+                type="text"
+                id="returnTemperatureMinInput"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                placeholder="in ` C"
+              />
+              <h3
+                class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                C
+              </h3>
+            </div>
+            <div class="flex mt-5 ml-5">
+              <h3
+                class="mt-5 text-[#073b4c] logo text-[20px] tracking-wider font-extrabold"
+              >
+                Return Temperature MEAN :
+              </h3>
+              <input
+                type="text"
+                id="returnTemperatureMeanInput"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none h-14 w-20"
+                placeholder="in ` C"
+              />
+              <h3
+                class="mt-5 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                C
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Utilization View -->
+
+    <section
+      class="ml-[17em] mt-4 container relative z-[1] pb-10"
+      id="Utilization"
+    >
+      <div class="mt-4 ml-4">
+        <h2 class="logo text-[25px] text-[#6B9080]">Utilization</h2>
+        <div class="flex mt-4">
+          <div class="w-1/2 ml-48">
+            <div class="flex ml-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Fuel Level :</h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="fuelLevelInput"
+                  class="px-4 py-2 rounded-lg background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  placeholder="Fuel Level"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 ml-48">
+            <div class="flex ml-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">GateWayId:</h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="GateWayIdInput"
+                  class="px-4 py-2 rounded-lg background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  placeholder="Fuel Level"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inventory -->
+
+    <section class="ml-[17em] mt-4 mb-4 container h-[23em]" id="inventory">
+      <div class="mt-4 ml-4">
+        <h2 class="logo text-[25px] text-[#6B9080]">Inventory</h2>
+        <div class="flex">
+          <div class="w-1/2 ml-20">
+            <div class="flex mt-5 ml-[8.2em]">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Ingress :</h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="ingressInput"
+                  class="px-4 py-2 rounded-2xl background ingress text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+                  onclick="toggleDropdown7()"
+                  placeholder="Motion Status"
+                  readonly
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                      />
+                      <path
+                        fill="#6B9080"
+                        d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="dropdown-content7 absolute z-[1] hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
+                >
+                  <a
+                    href="#tcp"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption7(this)"
+                    >TCP</a
+                  >
+                  <a
+                    href="#udp"
+                    class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                    onclick="selectOption7(this)"
+                    >UDP</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex mt-5 ml-20">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Device Model :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="deviceModelInput"
+                  class="px-4 py-2 rounded-lg background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  placeholder="Device Model"
+                />
+              </div>
+            </div>
+            <div class="flex mt-5 ml-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Organization Name :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="organizationNameInput"
+                  class="px-4 py-2 rounded-lg background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  placeholder="Name"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2">
+            <div class="flex mt-5 ml-16">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Device ID :</h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="deviceIDInput"
+                  class="px-4 py-2 rounded-lg background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  placeholder="Device ID"
+                />
+              </div>
+            </div>
+            <div class="flex mt-5 ml-5">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Account Name :
+              </h3>
+              <div class="relative inline-block mt-2 ml-3 text-left">
+                <input
+                  type="text"
+                  id="accountNameInput"
+                  class="px-4 py-2 rounded-lg background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none"
+                  placeholder="Account Name"
+                />
+              </div>
+            </div>
+            <div class="flex mt-5 ml-8">
+              <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
+                Battery Level :
+              </h3>
+              <input
+                type="text"
+                id="batteryLevelInput"
+                class="px-4 py-2 ml-3 mt-2 rounded-md background text-[#6B9080] font-semibold text-center cursor-text focus:outline-none w-20"
+                placeholder="in ` V"
+              />
+              <h3
+                class="mt-4 text-[#073b4c] ml-3 logo text-[18px] tracking-wider font-extrabold"
+              >
+                V
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- button  -->
+
+    <section class="flex">
+      <div class="mt-4 ml-[17em] mb-10">
+        <button
+          id="testButton"
+          onclick="checkInputsAndShowPopup()"
+          class="p-4 text-lg z-30 transition-all font-semibold tracking-wider hover:border-white hover:text-white hover:bg-[#073b4c] text-[#073b4c] border-[#6B9080] background border-2 rounded-full w-52 pl-9 pr-9 logo"
+        >
+          Test
+        </button>
+      </div>
+      <div class="mt-4 ml-[15em] mb-10">
+        <button
+          id="Automate"
+          onclick="automateData()"
+          class="p-4 text-lg transition-all font-semibold tracking-wider hover:border-white hover:text-white hover:bg-[#073b4c] text-[#073b4c] border-[#6B9080] background border-2 rounded-full w-52 pl-9 pr-9 logo"
+        >
+          Automate
+        </button>
+      </div>
+
+      <div class="mt-4 ml-[15em] mb-10">
+        <button
+          class="p-4 text-lg transition-all font-semibold tracking-wider hover:border-white hover:text-white hover:bg-[#073b4c] text-[#073b4c] border-[#6B9080] background border-2 rounded-full w-52 pl-9 pr-9 logo"
+          onclick="sendData()"
+        >
+          Send
+        </button>
+      </div>
+
+      <div class="mt-4 ml-[15em] mb-10">
+        <button
+          class="p-4 text-lg transition-all font-semibold tracking-wider hover:border-white hover:text-white hover:bg-[#073b4c] text-[#073b4c] border-[#6B9080] background border-2 rounded-full w-52 pl-9 pr-9 logo"
+        >
+          Send a mail
+        </button>
+      </div>
+    </section>
+    <!-- footer  -->
+
+    <footer class="ml-[15em]">
+      <section
+        class="w-full h-16 flex bg-[#D5BDAF] border-2 border-white place-content-end items-center pr-5"
+      >
+        <h2 class="ml-3 cursor-pointer font-extrabold text-[20px] text-white">
+          addons
+        </h2>
+      </section>
+    </footer>
+
+    <script crossorigin="anonymous" src="script.js" async defer></script>
+    <script src="server.js"></script>
+  </body>
+
+  <section
+    class="background1 hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto w-[40em] border-2 border-slate-300 rounded-lg z-10 h-[40em] text-center"
+    id="popupSection"
+  >
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 20 20"
+        class="mt-5 ml-[37em] cursor-pointer"
+        onclick="closePopup()"
+      >
+        <path
+          fill="#003566"
+          d="M2.93 17.07A10 10 0 1 1 17.07 2.93A10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34A8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83l-1.41 1.41L10 11.41l-2.83 2.83l-1.41-1.41L8.59 10L5.76 7.17l1.41-1.41L10 8.59l2.83-2.83l1.41 1.41z"
+        />
+      </svg>
+    </div>
+    <div class="w-40 h-40 rounded-full mt-44 ml-60">
+      <img src="images/tick.gif" alt="test" />
+    </div>
+    <div>
+      <h2 class="pt-12 pl-5 font-semibold logo text-[20px]">
+        All Tests Finished Successfully!
+      </h2>
+    </div>
+  </section>
+
+  <section
+    class="background1 hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto w-[40em] border-2 border-slate-300 rounded-lg z-10 h-[40em] text-center"
+    id="popupErrorSection"
+  >
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 20 20"
+        class="mt-5 ml-[37em] cursor-pointer"
+        onclick="closePopup()"
+      >
+        <path
+          fill="#003566"
+          d="M2.93 17.07A10 10 0 1 1 17.07 2.93A10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34A8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83l-1.41 1.41L10 11.41l-2.83 2.83l-1.41-1.41L8.59 10L5.76 7.17l1.41-1.41L10 8.59l2.83-2.83l1.41 1.41z"
+        />
+      </svg>
+    </div>
+    <div class="w-40 h-40 rounded-full mt-44 ml-60">
+      <img src="images/wrong.gif" alt="test" />
+    </div>
+    <div>
+      <h2 class="pt-12 pl-5 font-semibold logo text-[20px]">
+        Some Sections are Empty!
+      </h2>
+    </div>
+  </section>
+</html>
