@@ -3,375 +3,294 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <title>Your Web Page</title>
+    <title>Device Data</title>
   </head>
+  <body>
+    <h1>Device Data</h1>
 
-  <body class="p-8 bg-gray-100">
-    <div class="max-w-xl p-8 mx-auto bg-white rounded shadow-md">
-      <h1 class="mb-4 text-2xl font-bold">Data Section</h1>
+    <!-- Property In Device Message 1 -->
+    <h2>Property In Device Message 1</h2>
+    <form id="form1">
+      <label for="PointCurrentMode">Point Current Mode:</label>
+      <input type="text" id="PointCurrentMode" name="PointCurrentMode" />
 
-      <!-- Input fields for editable data -->
-      <div class="mb-4">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="deviceid"
-          >Device ID:</label
-        >
-        <input
-          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-          id="deviceid"
-          type="text"
-          placeholder="Device ID"
-          value="36287"
-        />
-      </div>
+      <!-- Add more input fields for other properties -->
 
-      <div class="mb-4">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="system"
-          >System:</label
-        >
-        <input
-          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-          id="system"
-          type="text"
-          placeholder="System"
-          value="HCI"
-        />
-      </div>
+      <label for="PointSensorName1">Point Sensor Name 1:</label>
+      <input type="text" id="PointSensorName1" name="PointSensorName1" />
 
-      <div class="mb-4">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="esn"
-          >ESN:</label
-        >
-        <input
-          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-          id="esn"
-          type="text"
-          placeholder="ESN"
-          value="H8NMR0001"
-        />
-      </div>
+      <label for="PointSensorSequence1">Point Sensor Sequence 1:</label>
+      <input
+        type="text"
+        id="PointSensorSequence1"
+        name="PointSensorSequence1"
+      />
 
-      <div class="mb-4">
-        <label
-          class="block mb-2 text-sm font-bold text-gray-700"
-          for="lasttxtime"
-          >Last TX Time:</label
-        >
-        <input
-          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-          id="lasttxtime"
-          type="text"
-          placeholder="Last TX Time"
-          value="2023-10-13T04:02:05Z"
-        />
-      </div>
+      <!-- Repeat the above two lines for other sensors -->
 
-      <!-- Add more input fields as needed -->
+      <label for="PointMsgTypeNum">Point Msg Type Num:</label>
+      <input type="text" id="PointMsgTypeNum" name="PointMsgTypeNum" />
 
-      <!-- Button to trigger data sending and download -->
-      <button
-        onclick="sendData()"
-        class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+      <label for="PointLocLat">Point Location Latitude:</label>
+      <input type="text" id="PointLocLat" name="PointLocLat" />
+
+      <label for="PointSensorNum5">Point Sensor Num 5:</label>
+      <input type="text" id="PointSensorNum5" name="PointSensorNum5" />
+
+      <label for="PointSensorNum4">Point Sensor Num 4:</label>
+      <input type="text" id="PointSensorNum4" name="PointSensorNum4" />
+
+      <label for="PointSensorNum6">Point Sensor Num 6:</label>
+      <input type="text" id="PointSensorNum6" name="PointSensorNum6" />
+
+      <label for="PointSensorSystem1Indication"
+        >Point Sensor System 1 Indication:</label
       >
-        Send Data & Download
-      </button>
-    </div>
+      <input
+        type="text"
+        id="PointSensorSystem1Indication"
+        name="PointSensorSystem1Indication"
+      />
 
+      <label for="PointSensorSystem1Mode">Point Sensor System 1 Mode:</label>
+      <input
+        type="text"
+        id="PointSensorSystem1Mode"
+        name="PointSensorSystem1Mode"
+      />
+
+      <label for="PointSensorSystem1Hour">Point Sensor System 1 Hour:</label>
+      <input
+        type="text"
+        id="PointSensorSystem1Hour"
+        name="PointSensorSystem1Hour"
+      />
+
+      <label for="PointSensorSystem1Setpoint"
+        >Point Sensor System 1 Setpoint:</label
+      >
+      <input
+        type="text"
+        id="PointSensorSystem1Setpoint"
+        name="PointSensorSystem1Setpoint"
+      />
+
+      <label for="PointSensorSystem1SupplyTemp"
+        >Point Sensor System 1 Supply Temperature Probe:</label
+      >
+      <input
+        type="text"
+        id="PointSensorSystem1SupplyTemp"
+        name="PointSensorSystem1SupplyTemp"
+      />
+
+      <label for="PointSensorSystem1ReturnTemp"
+        >Point Sensor System 1 Return Temperature Probe:</label
+      >
+      <input
+        type="text"
+        id="PointSensorSystem1ReturnTemp"
+        name="PointSensorSystem1ReturnTemp"
+      />
+
+      <label for="PointSensorSystem2Mode">Point Sensor System 2 Mode:</label>
+      <input
+        type="text"
+        id="PointSensorSystem2Mode"
+        name="PointSensorSystem2Mode"
+      />
+
+      <label for="PointSensorSystem2Hour">Point Sensor System 2 Hour:</label>
+      <input
+        type="text"
+        id="PointSensorSystem2Hour"
+        name="PointSensorSystem2Hour"
+      />
+
+      <label for="PointSensorSystem2Setpoint"
+        >Point Sensor System 2 Setpoint:</label
+      >
+      <input
+        type="text"
+        id="PointSensorSystem2Setpoint"
+        name="PointSensorSystem2Setpoint"
+      />
+
+      <label for="PointSensorSystem2SupplyTemp"
+        >Point Sensor System 2 Supply Temperature Probe:</label
+      >
+      <input
+        type="text"
+        id="PointSensorSystem2SupplyTemp"
+        name="PointSensorSystem2SupplyTemp"
+      />
+
+      <label for="PointSensorSystem2ReturnTemp"
+        >Point Sensor System 2 Return Temperature Probe:</label
+      >
+      <input
+        type="text"
+        id="PointSensorSystem2ReturnTemp"
+        name="PointSensorSystem2ReturnTemp"
+      />
+
+      <label for="PointSensorNTC1MAX">Point Sensor NTC1 MAX:</label>
+      <input type="text" id="PointSensorNTC1MAX" name="PointSensorNTC1MAX" />
+
+      <label for="PointSensorNTC1MIN">Point Sensor NTC1 MIN:</label>
+      <input type="text" id="PointSensorNTC1MIN" name="PointSensorNTC1MIN" />
+
+      <label for="PointSensorNTC1MEAN">Point Sensor NTC1 MEAN:</label>
+      <input type="text" id="PointSensorNTC1MEAN" name="PointSensorNTC1MEAN" />
+
+      <label for="PointSensorNTC2MAX">Point Sensor NTC2 MAX:</label>
+      <input type="text" id="PointSensorNTC2MAX" name="PointSensorNTC2MAX" />
+
+      <label for="PointSensorNTC2MIN">Point Sensor NTC2 MIN:</label>
+      <input type="text" id="PointSensorNTC2MIN" name="PointSensorNTC2MIN" />
+
+      <label for="PointSensorNTC2MEAN">Point Sensor NTC2 MEAN:</label>
+      <input type="text" id="PointSensorNTC2MEAN" name="PointSensorNTC2MEAN" />
+
+      <label for="PointSensorFuelReading">Point Sensor Fuel Reading:</label>
+      <input
+        type="text"
+        id="PointSensorFuelReading"
+        name="PointSensorFuelReading"
+      />
+
+      <label for="PointIngress">Point Ingress:</label>
+      <input type="text" id="PointIngress" name="PointIngress" />
+
+      <label for="PointBatteryRaw">Point Battery Raw:</label>
+      <input type="text" id="PointBatteryRaw" name="PointBatteryRaw" />
+    </form>
+
+    <!-- Property In Device Message 2 -->
+    <h2>Property In Device Message 2</h2>
+    <form id="form2">
+      <label for="dateReported">Date Reported:</label>
+      <input type="text" id="dateReported" name="dateReported" />
+
+      <label for="deviceid">Device ID:</label>
+      <input type="text" id="deviceid" name="deviceid" />
+
+      <label for="system">System:</label>
+      <input type="text" id="system" name="system" />
+
+      <label for="type">Type:</label>
+      <input type="text" id="type" name="type" />
+
+      <label for="lasttxtime">Last TX Time:</label>
+      <input type="text" id="lasttxtime" name="lasttxtime" />
+
+      <label for="PointSessionStatus">Point Session Status:</label>
+      <input type="text" id="PointSessionStatus" name="PointSessionStatus" />
+
+      <label for="PointMetaCEP">Point Meta CEP:</label>
+      <input type="text" id="PointMetaCEP" name="PointMetaCEP" />
+
+      <label for="PointMetaLat">Point Meta Latitude:</label>
+      <input type="text" id="PointMetaLat" name="PointMetaLat" />
+
+      <label for="PointMetaLon">Point Meta Longitude:</label>
+      <input type="text" id="PointMetaLon" name="PointMetaLon" />
+
+      <label for="PointTimeSinceCom">Point Time Since Communication:</label>
+      <input type="text" id="PointTimeSinceCom" name="PointTimeSinceCom" />
+
+      <label for="PointAlertLevel">Point Alert Level:</label>
+      <input type="text" id="PointAlertLevel" name="PointAlertLevel" />
+
+      <label for="PointAlertModeChange">Point Alert Mode Change:</label>
+      <input
+        type="text"
+        id="PointAlertModeChange"
+        name="PointAlertModeChange"
+      />
+
+      <label for="PointBattery">Point Battery:</label>
+      <input type="text" id="PointBattery" name="PointBattery" />
+
+      <label for="PointUnitTemperature">Point Unit Temperature:</label>
+      <input
+        type="text"
+        id="PointUnitTemperature"
+        name="PointUnitTemperature"
+      />
+
+      <label for="PointSensorNum0">Point Sensor Num 0:</label>
+      <input type="text" id="PointSensorNum0" name="PointSensorNum0" />
+
+      <label for="PointSensorNum1">Point Sensor Num 1:</label>
+      <input type="text" id="PointSensorNum1" name="PointSensorNum1" />
+
+      <label for="PointSensorNum7">Point Sensor Num 7:</label>
+      <input type="text" id="PointSensorNum7" name="PointSensorNum7" />
+
+      <label for="PointSensorNum8">Point Sensor Num 8:</label>
+      <input type="text" id="PointSensorNum8" name="PointSensorNum8" />
+
+      <label for="PointSensorNum9">Point Sensor Num 9:</label>
+      <input type="text" id="PointSensorNum9" name="PointSensorNum9" />
+
+      <label for="PointSensorNum10">Point Sensor Num 10:</label>
+      <input type="text" id="PointSensorNum10" name="PointSensorNum10" />
+
+      <label for="PointSensorNum11">Point Sensor Num 11:</label>
+      <input type="text" id="PointSensorNum11" name="PointSensorNum11" />
+
+      <label for="PointSensorSystem2MainHZ"
+        >Point Sensor System 2 Main HZ:</label
+      >
+      <input
+        type="text"
+        id="PointSensorSystem2MainHZ"
+        name="PointSensorSystem2MainHZ"
+      />
+
+      <label for="CLASS">CLASS:</label>
+      <input type="text" id="CLASS" name="CLASS" />
+    </form>
+
+    <!-- Download Button -->
+    <button onclick="downloadData()">Download Data</button>
+
+    <!-- JavaScript to handle download -->
     <script>
-      function sendData() {
-        // Retrieve values from input fields
-        const deviceid = document.getElementById("deviceid").value;
-        const system = document.getElementById("system").value;
-        const esn = document.getElementById("esn").value;
-        const lasttxtime = document.getElementById("lasttxtime").value;
+      function downloadData() {
+        // Collect data from the forms
+        const formData1 = new FormData(document.getElementById("form1"));
+        const formData2 = new FormData(document.getElementById("form2"));
 
-        // Create formatted data object
-        const formattedData = {
-          gatewayId: "ASSETLINK_NMR_262_001",
-          Moments: [
-            {
-              deviceid: deviceid,
-              system: system,
-              esn: esn,
-              lasttxtime: lasttxtime,
-              moments: [],
-            },
+        // Convert data to JSON format
+        const jsonData1 = {};
+        formData1.forEach((value, key) => {
+          jsonData1[key] = value;
+        });
+
+        const jsonData2 = {};
+        formData2.forEach((value, key) => {
+          jsonData2[key] = value;
+        });
+
+        // Create a Blob containing the JSON data
+        const blob = new Blob(
+          [
+            JSON.stringify(jsonData1, null, 2),
+            JSON.stringify(jsonData2, null, 2),
           ],
-        };
+          { type: "application/json" }
+        );
 
-        // Log the formatted data
-        console.log("Formatted Data:", formattedData);
+        // Create a download link
+        const downloadLink = document.createElement("a");
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = "device_data.json";
 
-        // Add your logic to send data and download here
+        // Simulate a click to trigger the download
+        downloadLink.click();
       }
     </script>
   </body>
 </html>
-
-<section class="ml-[17em] mt-4 container h-[23em]" id="common">
-  <div class="mt-4 ml-4">
-    <h2 class="logo text-[25px] text-[#6B9080]">Common</h2>
-    <div class="flex">
-      <div class="w-1/2 ml-20">
-        <div class="flex mt-5 ml-5">
-          <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
-            Reefer Motion Status :
-          </h3>
-          <div class="relative inline-block mt-2 ml-3 text-left">
-            <input
-              type="text"
-              id="reeferMotionStatusInput"
-              class="px-4 py-2 rounded-2xl background common text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
-              onclick="toggleDropdown0()"
-              placeholder="Reefer Motion Status"
-              readonly
-            />
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <g fill="none" fill-rule="evenodd">
-                  <path
-                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
-                  />
-                  <path
-                    fill="#6B9080"
-                    d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div
-              class="dropdown-content0 z-[1] absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
-            >
-              <a
-                href="#motion"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption0(this)"
-                >MOTION</a
-              >
-              <a
-                href="#off1"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption0(this)"
-                >OFF</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="flex mt-5 ml-[5.4em]">
-          <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Reefer Status :</h3>
-          <div class="relative inline-block mt-2 ml-3 text-left">
-            <input
-              type="text"
-              id="reeferStatusInput"
-              class="px-4 py-2 rounded-2xl background2 text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
-              onclick="toggleDropdown2()"
-              placeholder="Reefer Status"
-              readonly
-            />
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <g fill="none" fill-rule="evenodd">
-                  <path
-                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
-                  />
-                  <path
-                    fill="#6B9080"
-                    d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div
-              class="dropdown-content2 z-[1] absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
-            >
-              <a
-                href="#on2"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption2(this)"
-                >ON</a
-              >
-              <a
-                href="#off2"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption2(this)"
-                >OFF</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="flex mt-5 ml-[2.1em]">
-          <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
-            Last Reported Time :
-          </h3>
-          <div class="relative inline-block mt-2 ml-3">
-            <input
-              id="datepicker"
-              class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-pointer border-gray-300 focus:outline-none"
-              placeholder="Select a date"
-              readonly
-            />
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <g fill="none" fill-rule="evenodd">
-                  <path
-                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
-                  />
-                  <path
-                    fill="#6B9080"
-                    d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
-                  />
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-1/2">
-        <div class="flex justify-center ml-5">
-          <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Alert Status :</h3>
-          <div class="relative inline-block mt-2 ml-3 text-left">
-            <input
-              type="text"
-              id="alertStatusInput"
-              class="px-4 py-2 rounded-2xl background1 alert text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
-              onclick="toggleDropdown1()"
-              placeholder="Motion Status"
-              readonly
-            />
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <g fill="none" fill-rule="evenodd">
-                  <path
-                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
-                  />
-                  <path
-                    fill="#6B9080"
-                    d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div
-              class="dropdown-content1 z-[1] absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md"
-            >
-              <a
-                href="#on3"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption1(this)"
-                >ON</a
-              >
-              <a
-                href="#off3"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption1(this)"
-                >OFF</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center mt-5">
-          <h3 class="logo text-[20px] mt-3 text-[#073b4c]">Battery Status :</h3>
-          <div class="relative inline-block mt-2 ml-3 text-left">
-            <input
-              type="text"
-              id="batteryStatusInput"
-              class="px-4 py-2 rounded-2xl background3 text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
-              onclick="toggleDropdown3()"
-              placeholder="Battery Status"
-              readonly
-            />
-            <div
-              class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <g fill="none" fill-rule="evenodd">
-                  <path
-                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
-                  />
-                  <path
-                    fill="#6B9080"
-                    d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div
-              class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content3"
-            >
-              <a
-                href="#on4"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption3(this)"
-                >ON</a
-              >
-              <a
-                href="#off4"
-                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
-                onclick="selectOption3(this)"
-                >OFF</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="mt-5 ml-[6.5em]">
-          <div class="flex">
-            <h3 class="logo text-[20px] mt-3 text-[#073b4c]">
-              Last Known Location :
-            </h3>
-            <div class="relative inline-block mt-2 ml-3">
-              <input
-                id="latitudeInput"
-                class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-text border-gray-300 focus:outline-none"
-                placeholder="Enter Latitude"
-              />
-            </div>
-          </div>
-          <div class="relative inline-block mt-7 ml-[13em]">
-            <input
-              id="longitudeInput"
-              type=""
-              class="px-4 py-2 rounded-2xl font-semibold background text-[#6B9080] text-center cursor-text border-gray-300 focus:outline-none"
-              placeholder="Enter longitude"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>

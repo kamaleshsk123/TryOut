@@ -922,17 +922,6 @@ function automateData() {
   console.log("Data has been automated!");
 }
 
-//popup
-
-// function showPopup() {
-//   var popupSection = document.getElementById("popupSection");
-//   popupSection.classList.remove("hidden");
-
-//   // Add event listener to close the popup when clicking outside of it
-
-//   document.getElementById("closeIcon").addEventListener("click", closePopup);
-// }
-
 function checkInputsAndShowPopup() {
   var section = document.getElementById("inventory");
   var section = document.getElementById("common");
@@ -1322,7 +1311,8 @@ function sendData() {
 
       // Send data to the external API
       fetch(
-        "https://assetiq-dev.rt1cloud.com/reeferiq-api/docs/#/device-gateway-messages/DeviceGatewayMessagesController_manualMessageProcessing",
+        // "https://assetiq-dev.rt1cloud.com/reeferiq-api/docs/#/device-gateway-messages/DeviceGatewayMessagesController_manualMessageProcessing",
+        "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator",
         {
           method: "POST",
           body: JSON.stringify(formattedData),
