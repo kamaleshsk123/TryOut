@@ -910,13 +910,13 @@ function automateData() {
   document.getElementById("deviceModelInput").value = "Device";
   document.getElementById("organizationNameInput").value = "Organization";
   document.getElementById("deviceIDInput").value = "1010";
-  document.getElementById("batteryLevelInput").value = "80";
+  document.getElementById("batteryLevelInput").value = "8.0";
   document.getElementById("accountNameInput").value = "Name";
 
   document.getElementById("deviceid").value = "36287";
   document.getElementById("system").value = "HCI";
-  document.getElementById("esn").value = "H8NMR0001";
-  document.getElementById("lasttxtime").value = "2023-10-13T04:02:05Z";
+  document.getElementById("esn").value = "KAMALESH-NMR";
+  document.getElementById("lasttxtime").value = "2023-10-13T04:02:05Z"; //2023-10-13T04:02:05Z
   document.getElementById("gatewayId").value = "ASSETLINK_NMR_262_001";
 
   console.log("Data has been automated!");
@@ -966,6 +966,13 @@ function sendData() {
   const esn = document.getElementById("esn").value;
   const lasttxtime = document.getElementById("lasttxtime").value;
 
+  const latitude = document.getElementById("latitudeInput").value;
+  const longitude = document.getElementById("longitudeInput").value;
+
+  const ingress = document.getElementById("ingressInput").value;
+
+  const batteryLevel = document.getElementById("batteryLevelInput").value;
+
   fetch(`http://localhost:3000/fetchData?timestamp=${timestamp}`)
     .then((response) => response.json())
     .then((data) => {
@@ -974,10 +981,10 @@ function sendData() {
         gatewayId: "ASSETLINK_NMR_262_001",
         Moments: [
           {
-            deviceid: 36287,
-            system: "HCI",
-            esn: "KAMALESH-NMR",
-            lasttxtime: "2023-10-13T04:02:05Z",
+            deviceid: deviceid,
+            system: system,
+            esn: esn,
+            lasttxtime: lasttxtime,
             moments: [
               {
                 momentid: 99499146,
@@ -993,13 +1000,13 @@ function sendData() {
                   {
                     Point: {
                       MetaCEP: "19",
-                      MetaLat: "53.01230000246",
-                      MetaLon: "8.75523348438",
+                      MetaLat: latitude,
+                      MetaLon: longitude,
                     },
                   },
                   {
                     Point: {
-                      Ingress: "TCP",
+                      Ingress: ingress,
                     },
                   },
 
@@ -1027,18 +1034,18 @@ function sendData() {
                   },
                   {
                     PointLoc: {
-                      Lat: "53.087741571",
-                      Lon: "8.7176960236",
+                      Lat: latitude,
+                      Lon: longitude,
                     },
                   },
                   {
                     Point: {
-                      Battery: "7.9V",
+                      Battery: batteryLevel + "V",
                     },
                   },
                   {
                     Point: {
-                      BatteryRaw: "7.9",
+                      BatteryRaw: batteryLevel,
                     },
                   },
                   {
