@@ -903,7 +903,7 @@ function automateData() {
   document.getElementById("returnTemperatureMinInput").value = "20";
   document.getElementById("returnTemperatureMeanInput").value = "30";
 
-  document.getElementById("fuelLevelInput").value = "75";
+  document.getElementById("fuelLevelInput").value = "3.00";
   document.getElementById("GateWayIdInput").value = "ASSETLINK_NMR_262_001";
 
   document.getElementById("ingressInput").value = "UDP";
@@ -913,9 +913,9 @@ function automateData() {
   document.getElementById("batteryLevelInput").value = "8.0";
   document.getElementById("accountNameInput").value = "Name";
 
-  document.getElementById("deviceid").value = "36287";
+  document.getElementById("deviceid").value = "ANANTHI-NMR";
   document.getElementById("system").value = "HCI";
-  document.getElementById("esn").value = "KAMALESH-NMR";
+  document.getElementById("esn").value = "ANANTHI-NMR";
   document.getElementById("lasttxtime").value = "2023-10-13T04:02:05Z"; //2023-10-13T04:02:05Z
   document.getElementById("gatewayId").value = "ASSETLINK_NMR_262_001";
 
@@ -957,6 +957,412 @@ function closePopup() {
   document.removeEventListener("click", closePopup);
 }
 
+// function sendData() {
+// const timestamp = new Date().getTime();
+
+// const gatewayId = document.getElementById("gatewayId").value;
+// const deviceid = document.getElementById("deviceid").value;
+// const system = document.getElementById("system").value;
+// const esn = document.getElementById("esn").value;
+// const lasttxtime = document.getElementById("lasttxtime").value;
+
+// const latitude = document.getElementById("latitudeInput").value;
+// const longitude = document.getElementById("longitudeInput").value;
+
+// const ingress = document.getElementById("ingressInput").value;
+
+// const batteryLevel = document.getElementById("batteryLevelInput").value;
+
+//   fetch(`http://localhost:3000/fetchData?timestamp=${timestamp}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // Create a Blob containing the formatted data in rawdata format
+//       const formattedData = {
+//         gatewayId: "ASSETLINK_NMR_262_001",
+//         Moments: [
+//           {
+//             deviceid: "ANANTHI-NMR",
+//             system: "HCI",
+//             esn: "ANANTHI-NMR",
+//             lasttxtime: "2023-10-14T04:02:05Z",
+//             moments: [
+//               {
+//                 momentid: 99499146,
+//                 dateOriginated: "2023-11-21T20:00:18Z",
+//                 dateReported: "2023-10-14T10:08:04Z",
+//                 type: "1",
+//                 points: [
+//                   {
+//                     Point: {
+//                       SessionStatus: "0",
+//                     },
+//                   },
+//                   {
+//                     Point: {
+//                       MetaCEP: "19",
+//                       MetaLat: "40.7128",
+//                       MetaLon: "-74.0060",
+//                     },
+//                   },
+//                   {
+//                     Point: {
+//                       Ingress: "UDP",
+//                     },
+//                   },
+//                   {
+//                     Point: {
+//                       TimeSinceCom: "223.37",
+//                     },
+//                   },
+//                   {
+//                     PointMsgType: {
+//                       num: "1",
+//                       MsgType: "sensor report",
+//                     },
+//                   },
+//                   {
+//                     PointAlert: {
+//                       Level: "1",
+//                       ModeChange: "10",
+//                     },
+//                   },
+//                   {
+//                     Point: {
+//                       CurrentMode: "7",
+//                     },
+//                   },
+//                   {
+//                     PointLoc: {
+//                       Lat: "40.7128",
+//                       Lon: "-74.0060",
+//                     },
+//                   },
+//                   {
+//                     Point: {
+//                       Battery: "8.0V",
+//                     },
+//                   },
+//                   {
+//                     Point: {
+//                       BatteryRaw: "8.0",
+//                     },
+//                   },
+//                   {
+//                     Point: {
+//                       UnitTemperature: "16C - 23C",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 0,
+//                       Name: "Sensor0",
+//                       sequence: ["142"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 1,
+//                       Name: "Sensor1",
+//                       sequence: ["2"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 2,
+//                       Name: "Fuel Sensor Reading",
+//                       sequence: ["2"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 4,
+//                       Name: "NTC1 - Probe 1",
+//                       sequence: ["26"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 5,
+//                       Name: "DIGITAL TEMP",
+//                       sequence: ["45"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 6,
+//                       Name: "NTC2 - Probe 2",
+//                       sequence: ["30"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 7,
+//                       Name: "Sensor7",
+//                       sequence: [
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                       ],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 8,
+//                       Name: "Sensor8",
+//                       sequence: ["-32647", "-32647"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 9,
+//                       Name: "Sensor9",
+//                       sequence: [
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                         "-32647",
+//                       ],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 10,
+//                       Name: "Sensor10",
+//                       sequence: ["-32647", "-32647"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Num: 11,
+//                       Name: "Sensor11",
+//                       sequence: ["-32647", "-32647"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "NTC1-MAX",
+//                       sequence: ["-30"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "NTC1-MIN",
+//                       sequence: ["-40"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "NTC1-MEAN",
+//                       sequence: ["20"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "NTC2-MAX",
+//                       sequence: ["56"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "NTC2-MIN",
+//                       sequence: ["22"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "NTC2-MEAN",
+//                       sequence: ["20"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 2 Main HZ",
+//                       sequence: ["20"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 2 Operation hour",
+//                       sequence: ["234"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 2 Operation Mode",
+//                       sequence: ["5"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 2 Return Temperature Probe",
+//                       sequence: ["3.2"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 2 Supply Temperature Probe ",
+//                       sequence: ["6.5"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 2 Temperature Setpoint",
+//                       sequence: ["0.5"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "Active Errors 1",
+//                       sequence: ["0000000000000001"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 1 Operation hour",
+//                       sequence: ["611"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 1 System indication",
+//                       sequence: ["2"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 1 Operation Mode",
+//                       sequence: ["4"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 1 Return Temperature Probe",
+//                       sequence: ["23"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 1 Supply Temperature Probe",
+//                       sequence: ["10"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "System 1 Temperature Setpoint",
+//                       sequence: ["30"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "Active Errors 3",
+//                       sequence: ["0000000000001000"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                   {
+//                     PointSensor: {
+//                       Name: "Active Errors 2",
+//                       sequence: ["0000000000000001"],
+//                       enumeration: "values",
+//                     },
+//                   },
+//                 ],
+//                 dateReceived: "2023-10-12T10:08:04Z",
+//               },
+//             ],
+//             CLASS: "AP4i34",
+//           },
+//         ],
+//       };
+
+//       // Log the formatted data
+//       console.log(formattedData);
+
+//       // gateway
+//       console.log(JSON.stringify(formattedData, null, 2));
+//       // Send data to the external API
+//       fetch(
+//         // "https://assetiq-dev.rt1cloud.com/reeferiq-api/docs/#/device-gateway-messages/DeviceGatewayMessagesController_manualMessageProcessing",
+//         // "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator",
+//         "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator",
+//         {
+//           method: "POST",
+//           body: JSON.stringify(formattedData),
+//           headers: {
+//             "Gateway-ID": gatewayId,
+//           },
+//         }
+//       )
+//         .then((response) => {
+//           if (!response.ok) {
+//             throw new Error(`HTTP error! Status: ${response.status}`);
+//           }
+//           return response.text(); // Return the response text
+//         })
+//         .then((result) => {
+//           console.log("Data sent successfully:", result);
+
+//           // Create a Blob for the download
+//           const blob = new Blob([JSON.stringify(formattedData, null, 2)], {
+//             type: "application/json",
+//           });
+
+//           // Create a download link
+//           const link = document.createElement("a");
+//           link.href = window.URL.createObjectURL(blob);
+//           link.download = "data.rawdata";
+
+//           // Append the link to the document and trigger a click event to start the download
+//           document.body.appendChild(link);
+//           link.click();
+
+//           // Remove the link from the document
+//           document.body.removeChild(link);
+//         })
+//         .catch((error) => {
+//           console.error("Error sending data to the external API:", error);
+//         });
+//     })
+//     .catch((error) =>
+//       console.error("Error fetching data from MongoDB:", error)
+//     );
+// }
+
 function sendData() {
   const timestamp = new Date().getTime();
 
@@ -966,6 +1372,8 @@ function sendData() {
   const esn = document.getElementById("esn").value;
   const lasttxtime = document.getElementById("lasttxtime").value;
 
+  const fuelLevel = document.getElementById("fuelLevelInput").value;
+
   const latitude = document.getElementById("latitudeInput").value;
   const longitude = document.getElementById("longitudeInput").value;
 
@@ -973,394 +1381,383 @@ function sendData() {
 
   const batteryLevel = document.getElementById("batteryLevelInput").value;
 
-  fetch(`http://localhost:3000/fetchData?timestamp=${timestamp}`)
-    .then((response) => response.json())
-    .then((data) => {
-      // Create a Blob containing the formatted data in rawdata format
-      const formattedData = {
-        gatewayId: "ASSETLINK_NMR_262_001",
-        Moments: [
-          {
-            deviceid: deviceid,
-            system: system,
-            esn: esn,
-            lasttxtime: lasttxtime,
-            moments: [
-              {
-                momentid: 99499146,
-                dateOriginated: "2023-11-21T20:00:18Z",
-                dateReported: "2023-10-14T10:08:04Z",
-                type: "1",
-                points: [
-                  {
-                    Point: {
-                      SessionStatus: "0",
-                    },
-                  },
-                  {
-                    Point: {
-                      MetaCEP: "19",
-                      MetaLat: latitude,
-                      MetaLon: longitude,
-                    },
-                  },
-                  {
-                    Point: {
-                      Ingress: ingress,
-                    },
-                  },
+  const apiUrl =
+    "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator";
 
-                  {
-                    Point: {
-                      TimeSinceCom: "223.37",
-                    },
-                  },
-                  {
-                    PointMsgType: {
-                      num: "1",
-                      MsgType: "sensor report",
-                    },
-                  },
-                  {
-                    PointAlert: {
-                      Level: "1",
-                      ModeChange: "10",
-                    },
-                  },
-                  {
-                    Point: {
-                      CurrentMode: "7",
-                    },
-                  },
-                  {
-                    PointLoc: {
-                      Lat: latitude,
-                      Lon: longitude,
-                    },
-                  },
-                  {
-                    Point: {
-                      Battery: batteryLevel + "V",
-                    },
-                  },
-                  {
-                    Point: {
-                      BatteryRaw: batteryLevel,
-                    },
-                  },
-                  {
-                    Point: {
-                      UnitTemperature: "16C - 23C",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 0,
-                      Name: "Sensor0",
-                      sequence: ["142"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 1,
-                      Name: "Sensor1",
-                      sequence: ["2"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 2,
-                      Name: "Fuel Sensor Reading",
-                      sequence: ["2"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 4,
-                      Name: "NTC1 - Probe 1",
-                      sequence: ["26"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 5,
-                      Name: "DIGITAL TEMP",
-                      sequence: ["45"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 6,
-                      Name: "NTC2 - Probe 2",
-                      sequence: ["30"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 7,
-                      Name: "Sensor7",
-                      sequence: [
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                      ],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 8,
-                      Name: "Sensor8",
-                      sequence: ["-32647", "-32647"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 9,
-                      Name: "Sensor9",
-                      sequence: [
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                        "-32647",
-                      ],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 10,
-                      Name: "Sensor10",
-                      sequence: ["-32647", "-32647"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Num: 11,
-                      Name: "Sensor11",
-                      sequence: ["-32647", "-32647"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "NTC1-MAX",
-                      sequence: ["-30"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "NTC1-MIN",
-                      sequence: ["-40"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "NTC1-MEAN",
-                      sequence: ["20"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "NTC2-MAX",
-                      sequence: ["56"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "NTC2-MIN",
-                      sequence: ["22"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "NTC2-MEAN",
-                      sequence: ["20"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 2 Main HZ",
-                      sequence: ["20"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 2 Operation hour",
-                      sequence: ["234"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 2 Operation Mode",
-                      sequence: ["5"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 2 Return Temperature Probe",
-                      sequence: ["3.2"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 2 Supply Temperature Probe ",
-                      sequence: ["6.5"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 2 Temperature Setpoint",
-                      sequence: ["0.5"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "Active Errors 1",
-                      sequence: ["0000000000000001"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 1 Operation hour",
-                      sequence: ["611"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 1 System indication",
-                      sequence: ["2"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 1 Operation Mode",
-                      sequence: ["4"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 1 Return Temperature Probe",
-                      sequence: ["23"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 1 Supply Temperature Probe",
-                      sequence: ["10"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "System 1 Temperature Setpoint",
-                      sequence: ["30"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "Active Errors 3",
-                      sequence: ["0000000000001000"],
-                      enumeration: "values",
-                    },
-                  },
-                  {
-                    PointSensor: {
-                      Name: "Active Errors 2",
-                      sequence: ["0000000000000001"],
-                      enumeration: "values",
-                    },
-                  },
-                ],
-                dateReceived: "2023-10-12T10:08:04Z",
+  const requestData = {
+    gatewayId: gatewayId,
+    Moments: [
+      {
+        deviceid: deviceid,
+        system: system,
+        esn: esn,
+        lasttxtime: lasttxtime,
+        moments: [
+          {
+            momentid: 99499146,
+            dateOriginated: lasttxtime,
+            dateReported: lasttxtime,
+            type: "1",
+            points: [
+              {
+                Point: {
+                  SessionStatus: "0",
+                },
+              },
+              {
+                Point: {
+                  MetaCEP: "19",
+                  MetaLat: latitude,
+                  MetaLon: longitude,
+                },
+              },
+              {
+                Point: {
+                  Ingress: ingress,
+                },
+              },
+              {
+                Point: {
+                  TimeSinceCom: "223.37",
+                },
+              },
+              {
+                PointMsgType: {
+                  num: "1",
+                  MsgType: "sensor report",
+                },
+              },
+              {
+                PointAlert: {
+                  Level: "1",
+                  ModeChange: "10",
+                },
+              },
+              {
+                Point: {
+                  CurrentMode: "7",
+                },
+              },
+              {
+                PointLoc: {
+                  Lat: "40.7128",
+                  Lon: "-74.0060",
+                },
+              },
+              {
+                Point: {
+                  Battery: batteryLevel + "V",
+                },
+              },
+              {
+                Point: {
+                  BatteryRaw: batteryLevel,
+                },
+              },
+              {
+                Point: {
+                  UnitTemperature: "16C - 23C",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 0,
+                  Name: "Sensor0",
+                  sequence: ["142"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 1,
+                  Name: "Sensor1",
+                  sequence: ["2"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 2,
+                  Name: "Fuel Sensor Reading",
+                  sequence: fuelLevel,
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 4,
+                  Name: "NTC1 - Probe 1",
+                  sequence: ["26"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 5,
+                  Name: "DIGITAL TEMP",
+                  sequence: ["45"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 6,
+                  Name: "NTC2 - Probe 2",
+                  sequence: ["30"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 7,
+                  Name: "Sensor7",
+                  sequence: [
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                  ],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 8,
+                  Name: "Sensor8",
+                  sequence: ["-32647", "-32647"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 9,
+                  Name: "Sensor9",
+                  sequence: [
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                    "-32647",
+                  ],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 10,
+                  Name: "Sensor10",
+                  sequence: ["-32647", "-32647"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Num: 11,
+                  Name: "Sensor11",
+                  sequence: ["-32647", "-32647"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "NTC1-MAX",
+                  sequence: ["-30"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "NTC1-MIN",
+                  sequence: ["-40"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "NTC1-MEAN",
+                  sequence: ["20"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "NTC2-MAX",
+                  sequence: ["56"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "NTC2-MIN",
+                  sequence: ["22"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "NTC2-MEAN",
+                  sequence: ["20"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 2 Main HZ",
+                  sequence: ["20"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 2 Operation hour",
+                  sequence: ["234"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 2 Operation Mode",
+                  sequence: ["5"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 2 Return Temperature Probe",
+                  sequence: ["3.2"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 2 Supply Temperature Probe ",
+                  sequence: ["6.5"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 2 Temperature Setpoint",
+                  sequence: ["0.5"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "Active Errors 1",
+                  sequence: ["0000000000000001"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 1 Operation hour",
+                  sequence: ["611"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 1 System indication",
+                  sequence: ["2"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 1 Operation Mode",
+                  sequence: ["4"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 1 Return Temperature Probe",
+                  sequence: ["23"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 1 Supply Temperature Probe",
+                  sequence: ["10"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "System 1 Temperature Setpoint",
+                  sequence: ["30"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "Active Errors 3",
+                  sequence: ["0000000000001000"],
+                  enumeration: "values",
+                },
+              },
+              {
+                PointSensor: {
+                  Name: "Active Errors 2",
+                  sequence: ["0000000000000001"],
+                  enumeration: "values",
+                },
               },
             ],
-            CLASS: "AP4i34",
+            dateReceived: "2023-10-12T10:08:04Z",
           },
         ],
-      };
+        CLASS: "AP4i34",
+      },
+    ],
+  };
 
-      // Log the formatted data
-      console.log("Formatted Data:", formattedData);
-
-      // gateway
-
-      // Send data to the external API
-      fetch(
-        // "https://assetiq-dev.rt1cloud.com/reeferiq-api/docs/#/device-gateway-messages/DeviceGatewayMessagesController_manualMessageProcessing",
-        "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator",
-        {
-          method: "POST",
-          body: JSON.stringify(formattedData),
-          headers: {
-            "Gateway-ID": gatewayId,
-          },
-        }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.text(); // Return the response text
-        })
-        .then((result) => {
-          console.log("Data sent successfully:", result);
-
-          // Create a Blob for the download
-          const blob = new Blob([JSON.stringify(formattedData, null, 2)], {
-            type: "application/json",
-          });
-
-          // Create a download link
-          const link = document.createElement("a");
-          link.href = window.URL.createObjectURL(blob);
-          link.download = "data.rawdata";
-
-          // Append the link to the document and trigger a click event to start the download
-          document.body.appendChild(link);
-          link.click();
-
-          // Remove the link from the document
-          document.body.removeChild(link);
-        })
-        .catch((error) => {
-          console.error("Error sending data to the external API:", error);
-        });
+  axios
+    .post(apiUrl, requestData, {
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+      },
     })
-    .catch((error) =>
-      console.error("Error fetching data from MongoDB:", error)
-    );
+    .then((response) => {
+      // Check if the response is successful
+      if (response.data === true) {
+        showSuccessPopup();
+        console.log(response.data);
+      } else {
+        showErrorPopup("Unexpected response");
+        console.log(response.data);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error.message);
+      showErrorPopup("Failed to send data");
+    });
+}
+
+function showSuccessPopup() {
+  const popup = document.getElementById("popupSection1");
+  popup.classList.remove("hidden");
+}
+
+function showErrorPopup(errorMessage) {
+  const popupError = document.getElementById("popupErrorSection1");
+  popupError.classList.remove("hidden");
+  const errorText = document.querySelector("#popupErrorSection1 h2");
+  errorText.textContent = errorMessage;
+}
+
+function closePopup1() {
+  const popup = document.getElementById("popupSection1");
+  popup.classList.add("hidden");
+
+  const popupError = document.getElementById("popupErrorSection1");
+  popupError.classList.add("hidden");
 }
 
 // trash can
