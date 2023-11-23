@@ -901,8 +901,8 @@ function automateData() {
   document.getElementById("datepicker").value = "2023-04-01";
   document.getElementById("alertStatusInput").value = "ON";
   document.getElementById("batteryStatusInput").value = "ON";
-  document.getElementById("latitudeInput").value = "40.7128";
-  document.getElementById("longitudeInput").value = "-74.0060";
+  document.getElementById("latitudeInput").value = "18.98367";
+  document.getElementById("longitudeInput").value = "29.72933";
 
   document.getElementById("tagsInput").value = "Tag1";
   document.getElementById("commodityInput").value = "CHEMICAL";
@@ -931,6 +931,44 @@ function automateData() {
   document.getElementById("gatewayId").value = "ASSETLINK_NMR_262_001";
 
   console.log("Data has been automated!");
+}
+
+// Alert1
+var alert1 = Array(16).fill(0); // Array with 16 zeros
+var reversedAlert1 = alert1.slice().reverse(); // Initialize reversedAlert1
+
+function updateCheckboxValue(index) {
+  // Toggle the value in the array based on the checkbox index
+  alert1[index] = alert1[index] === 1 ? 0 : 1;
+
+  // Reverse the array to get the desired order
+  reversedAlert1 = alert1.slice().reverse();
+}
+
+// Alert2
+
+var alert2 = Array(16).fill(0); // Array with 16 zeros
+var reversedAlert = alert2.slice().reverse(); // Initialize reversedAlert
+
+function updateCheckboxValue1(index) {
+  // Toggle the value in the array based on the checkbox index
+  alert2[index] = alert2[index] === 1 ? 0 : 1;
+
+  // Reverse the array to get the desired order
+  reversedAlert = alert2.slice().reverse();
+}
+
+// Alert3
+
+var alert3 = Array(16).fill(0); // Array with 16 zeros
+var reversedAlert2 = alert3.slice().reverse(); // Initialize reversedAlert
+
+function updateCheckboxValue2(index) {
+  // Toggle the value in the array based on the checkbox index
+  alert3[index] = alert3[index] === 1 ? 0 : 1;
+
+  // Reverse the array to get the desired order
+  reversedAlert2 = alert3.slice().reverse();
 }
 
 function checkInputsAndShowPopup() {
@@ -1033,7 +1071,9 @@ function sendData() {
   ).value;
 
   console.log(primarySystemInput.value);
-
+  console.log(reversedAlert1.join(""));
+  console.log(reversedAlert.join(""));
+  console.log(reversedAlert2.join(""));
   console.log("Selected mode value outside the function:", modeValue);
   console.log("Selected mode value1 outside the function:", modeValue1);
 
@@ -1305,7 +1345,7 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "Active Errors 1",
-                  sequence: ["0000000000000001"],
+                  sequence: [reversedAlert1.join("")], // [alert1] ["0000000000000001"] [reversedAlert1.join("")] [12] [Low current on heat element]
                   enumeration: "values",
                 },
               },
@@ -1354,14 +1394,14 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "Active Errors 3",
-                  sequence: ["0000000000001000"],
+                  sequence: [reversedAlert2.join("")], //["000000000001000"] [reversedAlert2.join("")] ["43"] ["Heat element temp too high"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "Active Errors 2",
-                  sequence: ["0000000000000001"],
+                  sequence: [reversedAlert.join("")], //["0000000000000001"]  [reversedAlert.join("")] [20,28] [Different current on heat element, Float switch failure]
                   enumeration: "values",
                 },
               },
