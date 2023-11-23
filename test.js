@@ -1454,3 +1454,48 @@ function closePopup1() {
 }
 
 // trash can
+
+let modeValue;
+function toggleDropdown5() {
+  var dropdown5 = document.querySelector(".dropdown-content5");
+  dropdown5.classList.toggle("hidden");
+}
+
+function selectOption5(option) {
+  var dropdown5 = document.querySelector(".dropdown-content5");
+  dropdown5.classList.add("hidden");
+
+  var inputValue5 = option.textContent;
+  modeValue = option.getAttribute("data-mode");
+
+  document.querySelector(".operation-p").value = inputValue5;
+
+  // Use modeValue outside the function.
+}
+
+document
+  .querySelector(
+    ".absolute.inset-y-0.right-0.flex.items-center.px-2.pointer-events-none"
+  )
+  .addEventListener("click", function (event) {
+    event.stopPropagation();
+    toggleDropdown5();
+  });
+
+var options5 = document.querySelectorAll(".dropdown-content5 a");
+options5.forEach(function (option) {
+  option.addEventListener("click", function (event) {
+    event.stopPropagation();
+    selectOption5(option);
+  });
+});
+
+window.addEventListener("click", function (event) {
+  var dropdown5 = document.querySelector(".dropdown-content5");
+  if (
+    !event.target.matches(".cursor-pointer") &&
+    !event.target.closest(".dropdown-content5")
+  ) {
+    dropdown5.classList.add("hidden");
+  }
+});

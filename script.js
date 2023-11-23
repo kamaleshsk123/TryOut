@@ -229,6 +229,7 @@ window.addEventListener("click", function (event) {
 
 //operation(p)
 
+let modeValue;
 function toggleDropdown5() {
   var dropdown5 = document.querySelector(".dropdown-content5");
   dropdown5.classList.toggle("hidden");
@@ -239,7 +240,11 @@ function selectOption5(option) {
   dropdown5.classList.add("hidden");
 
   var inputValue5 = option.textContent;
+  modeValue = option.getAttribute("data-mode");
+
   document.querySelector(".operation-p").value = inputValue5;
+
+  // Use modeValue outside the function.
 }
 
 document
@@ -271,6 +276,7 @@ window.addEventListener("click", function (event) {
 
 //operation(s)
 
+let modeValue1;
 function toggleDropdown6() {
   var dropdown6 = document.querySelector(".dropdown-content6");
   dropdown6.classList.toggle("hidden");
@@ -279,6 +285,8 @@ function toggleDropdown6() {
 function selectOption6(option) {
   var dropdown6 = document.querySelector(".dropdown-content6");
   dropdown6.classList.add("hidden");
+
+  modeValue1 = option.getAttribute("data-mode1");
 
   var inputValue6 = option.textContent;
   document.querySelector(".operation-s").value = inputValue6;
@@ -1057,6 +1065,9 @@ function sendData() {
 
   console.log(primarySystemInput.value);
 
+  console.log("Selected mode value outside the function:", modeValue);
+  console.log("Selected mode value1 outside the function:", modeValue1);
+
   const ingress = document.getElementById("ingressInput").value;
   const apiUrl =
     "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator";
@@ -1297,7 +1308,7 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "System 2 Operation Mode",
-                  sequence: [operationModeSInput], //["5"] operationModeSInput
+                  sequence: [modeValue1], //["5"] operationModeSInput
                   enumeration: "values",
                 },
               },
@@ -1346,7 +1357,7 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "System 1 Operation Mode",
-                  sequence: [operationModePInput], // ["5"] operationModePInput
+                  sequence: [modeValue], // ["5"] operationModePInput
                   enumeration: "values",
                 },
               },
