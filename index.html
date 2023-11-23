@@ -637,35 +637,53 @@
         <h2 class="logo text-[25px] text-[#6B9080]">Temperature View</h2>
         <div class="flex ml-36">
           <h3 class="logo text-[20px] mt-7 mb-7 text-[#073b4c]">
-            Primary System
+            Primary System :
           </h3>
-          <div class="flex mt-2 font-medium space-x-28 ml-28">
-            <label class="inline-flex items-center">
-              <input
-                type="radio"
-                id="systemInput"
-                class="form-radio text-[#689080] focus:ring-[#6B9080] h-4 w-4"
-                name="group"
-                value="System 1"
-                checked
-              />
-              <span class="ml-2 text-[#2c7da0] text-[19px] logo1 tracking-wide"
-                >System 1</span
+          <div class="relative inline-block mt-6 text-left ml-7">
+            <input
+              type="text"
+              id="primarySystem"
+              class="px-4 py-2 rounded-2xl back primarysystem text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
+              onclick="toggleDropdown9()"
+              placeholder="Primary System"
+              readonly
+            />
+            <div
+              class="absolute inset-y-0 right-0 flex items-center px-2 mt-[-1em] mr-3 pointer-events-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
               >
-            </label>
-
-            <label class="inline-flex items-center">
-              <input
-                type="radio"
-                id="systemInput1"
-                class="form-radio text-[#689080] focus:ring-[#6B9080] h-4 w-4"
-                name="group"
-                value="System 2"
-              />
-              <span class="ml-2 text-[#2c7da0] logo1 text-[19px] tracking-wide"
-                >System 2</span
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
+                  />
+                  <path
+                    fill="#6B9080"
+                    d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div
+              class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content9"
+            >
+              <a
+                href="#Cooling"
+                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                onclick="selectOption9(this, '1')"
+                >SYSTEM 1</a
               >
-            </label>
+              <a
+                href="#Heating"
+                class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
+                onclick="selectOption9(this, '2')"
+                >SYSTEM 2</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -861,16 +879,16 @@
                     class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content5"
                   >
                     <a
-                      href="#cooling"
+                      href="#Cooling"
                       class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
                       onclick="selectOption5(this)"
-                      >COOLING</a
+                      >Cooling</a
                     >
                     <a
-                      href="#waiting"
+                      href="#Heating"
                       class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
                       onclick="selectOption5(this)"
-                      >WAITING</a
+                      >Heating</a
                     >
                   </div>
                 </div>
@@ -930,16 +948,16 @@
                     class="absolute z-[1] hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content6"
                   >
                     <a
-                      href="#coolings"
+                      href="#Coolings"
                       class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
                       onclick="selectOption6(this)"
-                      >COOLING</a
+                      >Cooling</a
                     >
                     <a
-                      href="#waitings"
+                      href="#Heatings"
                       class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
                       onclick="selectOption6(this)"
-                      >WAITING</a
+                      >Heating</a
                     >
                   </div>
                 </div>

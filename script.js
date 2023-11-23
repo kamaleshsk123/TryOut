@@ -368,6 +368,54 @@ function toggleDropdown8() {
   }
 }
 
+//Primary System
+
+function toggleDropdown9() {
+  var dropdown9 = document.querySelector(".dropdown-content9");
+  dropdown9.classList.toggle("hidden");
+}
+
+function selectOption9(option) {
+  var dropdown9 = document.querySelector(".dropdown-content9");
+  dropdown9.classList.add("hidden");
+
+  var inputValue9 = option.textContent;
+  document.querySelector(".primarysystem").value = inputValue9;
+}
+
+const primarySystemInput = document.getElementById("primarySystem");
+function selectOption9(option, system) {
+  primarySystemInput.value = `System${system}`;
+  toggleDropdown9();
+}
+
+document
+  .querySelector(
+    ".absolute.inset-y-0.right-0.flex.items-center.px-2.pointer-events-none"
+  )
+  .addEventListener("click", function (event) {
+    event.stopPropagation();
+    toggleDropdown9();
+  });
+
+var options9 = document.querySelectorAll(".dropdown-content9 a");
+options9.forEach(function (option, index) {
+  option.addEventListener("click", function (event) {
+    event.stopPropagation();
+    selectOption9(option, index + 1);
+  });
+});
+
+window.addEventListener("click", function (event) {
+  var dropdown9 = document.querySelector(".dropdown-content9");
+  if (
+    !event.target.matches(".cursor-pointer") &&
+    !event.target.closest(".dropdown-content9")
+  ) {
+    dropdown9.classList.add("hidden");
+  }
+});
+
 // Function to create the logout button
 function createLogoutButton() {
   var logoutButton = document.createElement("button");
@@ -957,415 +1005,7 @@ function closePopup() {
   document.removeEventListener("click", closePopup);
 }
 
-// function sendData() {
-// const timestamp = new Date().getTime();
-
-// const gatewayId = document.getElementById("gatewayId").value;
-// const deviceid = document.getElementById("deviceid").value;
-// const system = document.getElementById("system").value;
-// const esn = document.getElementById("esn").value;
-// const lasttxtime = document.getElementById("lasttxtime").value;
-
-// const latitude = document.getElementById("latitudeInput").value;
-// const longitude = document.getElementById("longitudeInput").value;
-
-// const ingress = document.getElementById("ingressInput").value;
-
-// const batteryLevel = document.getElementById("batteryLevelInput").value;
-
-//   fetch(`http://localhost:3000/fetchData?timestamp=${timestamp}`)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // Create a Blob containing the formatted data in rawdata format
-//       const formattedData = {
-//         gatewayId: "ASSETLINK_NMR_262_001",
-//         Moments: [
-//           {
-//             deviceid: "ANANTHI-NMR",
-//             system: "HCI",
-//             esn: "ANANTHI-NMR",
-//             lasttxtime: "2023-10-14T04:02:05Z",
-//             moments: [
-//               {
-//                 momentid: 99499146,
-//                 dateOriginated: "2023-11-21T20:00:18Z",
-//                 dateReported: "2023-10-14T10:08:04Z",
-//                 type: "1",
-//                 points: [
-//                   {
-//                     Point: {
-//                       SessionStatus: "0",
-//                     },
-//                   },
-//                   {
-//                     Point: {
-//                       MetaCEP: "19",
-//                       MetaLat: "40.7128",
-//                       MetaLon: "-74.0060",
-//                     },
-//                   },
-//                   {
-//                     Point: {
-//                       Ingress: "UDP",
-//                     },
-//                   },
-//                   {
-//                     Point: {
-//                       TimeSinceCom: "223.37",
-//                     },
-//                   },
-//                   {
-//                     PointMsgType: {
-//                       num: "1",
-//                       MsgType: "sensor report",
-//                     },
-//                   },
-//                   {
-//                     PointAlert: {
-//                       Level: "1",
-//                       ModeChange: "10",
-//                     },
-//                   },
-//                   {
-//                     Point: {
-//                       CurrentMode: "7",
-//                     },
-//                   },
-//                   {
-//                     PointLoc: {
-//                       Lat: "40.7128",
-//                       Lon: "-74.0060",
-//                     },
-//                   },
-//                   {
-//                     Point: {
-//                       Battery: "8.0V",
-//                     },
-//                   },
-//                   {
-//                     Point: {
-//                       BatteryRaw: "8.0",
-//                     },
-//                   },
-//                   {
-//                     Point: {
-//                       UnitTemperature: "16C - 23C",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 0,
-//                       Name: "Sensor0",
-//                       sequence: ["142"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 1,
-//                       Name: "Sensor1",
-//                       sequence: ["2"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 2,
-//                       Name: "Fuel Sensor Reading",
-//                       sequence: ["2"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 4,
-//                       Name: "NTC1 - Probe 1",
-//                       sequence: ["26"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 5,
-//                       Name: "DIGITAL TEMP",
-//                       sequence: ["45"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 6,
-//                       Name: "NTC2 - Probe 2",
-//                       sequence: ["30"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 7,
-//                       Name: "Sensor7",
-//                       sequence: [
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                       ],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 8,
-//                       Name: "Sensor8",
-//                       sequence: ["-32647", "-32647"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 9,
-//                       Name: "Sensor9",
-//                       sequence: [
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                         "-32647",
-//                       ],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 10,
-//                       Name: "Sensor10",
-//                       sequence: ["-32647", "-32647"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Num: 11,
-//                       Name: "Sensor11",
-//                       sequence: ["-32647", "-32647"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "NTC1-MAX",
-//                       sequence: ["-30"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "NTC1-MIN",
-//                       sequence: ["-40"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "NTC1-MEAN",
-//                       sequence: ["20"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "NTC2-MAX",
-//                       sequence: ["56"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "NTC2-MIN",
-//                       sequence: ["22"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "NTC2-MEAN",
-//                       sequence: ["20"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 2 Main HZ",
-//                       sequence: ["20"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 2 Operation hour",
-//                       sequence: ["234"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 2 Operation Mode",
-//                       sequence: ["5"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 2 Return Temperature Probe",
-//                       sequence: ["3.2"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 2 Supply Temperature Probe ",
-//                       sequence: ["6.5"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 2 Temperature Setpoint",
-//                       sequence: ["0.5"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "Active Errors 1",
-//                       sequence: ["0000000000000001"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 1 Operation hour",
-//                       sequence: ["611"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 1 System indication",
-//                       sequence: ["2"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 1 Operation Mode",
-//                       sequence: ["4"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 1 Return Temperature Probe",
-//                       sequence: ["23"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 1 Supply Temperature Probe",
-//                       sequence: ["10"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "System 1 Temperature Setpoint",
-//                       sequence: ["30"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "Active Errors 3",
-//                       sequence: ["0000000000001000"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                   {
-//                     PointSensor: {
-//                       Name: "Active Errors 2",
-//                       sequence: ["0000000000000001"],
-//                       enumeration: "values",
-//                     },
-//                   },
-//                 ],
-//                 dateReceived: "2023-10-12T10:08:04Z",
-//               },
-//             ],
-//             CLASS: "AP4i34",
-//           },
-//         ],
-//       };
-
-//       // Log the formatted data
-//       console.log(formattedData);
-
-//       // gateway
-//       console.log(JSON.stringify(formattedData, null, 2));
-//       // Send data to the external API
-//       fetch(
-//         // "https://assetiq-dev.rt1cloud.com/reeferiq-api/docs/#/device-gateway-messages/DeviceGatewayMessagesController_manualMessageProcessing",
-//         // "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator",
-//         "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator",
-//         {
-//           method: "POST",
-//           body: JSON.stringify(formattedData),
-//           headers: {
-//             "Gateway-ID": gatewayId,
-//           },
-//         }
-//       )
-//         .then((response) => {
-//           if (!response.ok) {
-//             throw new Error(`HTTP error! Status: ${response.status}`);
-//           }
-//           return response.text(); // Return the response text
-//         })
-//         .then((result) => {
-//           console.log("Data sent successfully:", result);
-
-//           // Create a Blob for the download
-//           const blob = new Blob([JSON.stringify(formattedData, null, 2)], {
-//             type: "application/json",
-//           });
-
-//           // Create a download link
-//           const link = document.createElement("a");
-//           link.href = window.URL.createObjectURL(blob);
-//           link.download = "data.rawdata";
-
-//           // Append the link to the document and trigger a click event to start the download
-//           document.body.appendChild(link);
-//           link.click();
-
-//           // Remove the link from the document
-//           document.body.removeChild(link);
-//         })
-//         .catch((error) => {
-//           console.error("Error sending data to the external API:", error);
-//         });
-//     })
-//     .catch((error) =>
-//       console.error("Error fetching data from MongoDB:", error)
-//     );
-// }
-
 function sendData() {
-  const timestamp = new Date().getTime();
-
   const gatewayId = document.getElementById("gatewayId").value;
   const deviceid = document.getElementById("deviceid").value;
   const system = document.getElementById("system").value;
@@ -1374,13 +1014,50 @@ function sendData() {
 
   const fuelLevel = document.getElementById("fuelLevelInput").value;
 
+  const timestamp = new Date().getTime();
   const latitude = document.getElementById("latitudeInput").value;
   const longitude = document.getElementById("longitudeInput").value;
-
-  const ingress = document.getElementById("ingressInput").value;
-
   const batteryLevel = document.getElementById("batteryLevelInput").value;
 
+  const ambientTemperatureInput = document.getElementById(
+    "ambientTemperatureInput"
+  ).value;
+  const operationModePInput = document.getElementById(
+    "operationModePInput"
+  ).value;
+  const operationModeSInput = document.getElementById(
+    "operationModeSInput"
+  ).value;
+  const operationHoursPInput = document.getElementById(
+    "operationHoursPInput"
+  ).value;
+  const operationHoursSInput = document.getElementById(
+    "operationHoursSInput"
+  ).value;
+
+  const primarySystem = document.getElementById("primarySystem").value;
+  const setPointTemperatureInput = document.getElementById(
+    "setPointTemperatureInput"
+  ).value;
+  const returnTemperatureInput = document.getElementById(
+    "returnTemperatureInput"
+  ).value;
+  const supplyTemperatureInput = document.getElementById(
+    "supplyTemperatureInput"
+  ).value;
+  const setPointTemperatureInput1 = document.getElementById(
+    "setPointTemperatureInput1"
+  ).value;
+  const returnTemperatureInput1 = document.getElementById(
+    "returnTemperatureInput1"
+  ).value;
+  const supplyTemperatureInput1 = document.getElementById(
+    "supplyTemperatureInput1"
+  ).value;
+
+  console.log(primarySystemInput.value);
+
+  const ingress = document.getElementById("ingressInput").value;
   const apiUrl =
     "https://assetiq-dev.rt1cloud.com/reeferiq-api/device-gateway-messages/message-simulator";
 
@@ -1479,7 +1156,7 @@ function sendData() {
                 PointSensor: {
                   Num: 2,
                   Name: "Fuel Sensor Reading",
-                  sequence: fuelLevel,
+                  sequence: [fuelLevel],
                   enumeration: "values",
                 },
               },
@@ -1495,7 +1172,7 @@ function sendData() {
                 PointSensor: {
                   Num: 5,
                   Name: "DIGITAL TEMP",
-                  sequence: ["45"],
+                  sequence: [ambientTemperatureInput], //["45"] ambientTemperatureInput
                   enumeration: "values",
                 },
               },
@@ -1620,28 +1297,28 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "System 2 Operation Mode",
-                  sequence: ["5"],
+                  sequence: [operationModeSInput], //["5"] operationModeSInput
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "System 2 Return Temperature Probe",
-                  sequence: ["3.2"],
+                  sequence: [returnTemperatureInput1], //["3.2"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "System 2 Supply Temperature Probe ",
-                  sequence: ["6.5"],
+                  sequence: [supplyTemperatureInput1], //["6.5"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "System 2 Temperature Setpoint",
-                  sequence: ["0.5"],
+                  sequence: [setPointTemperatureInput1], //["0.5"]
                   enumeration: "values",
                 },
               },
@@ -1662,35 +1339,35 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "System 1 System indication",
-                  sequence: ["2"],
+                  sequence: [primarySystem], //primarySystem ["2"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "System 1 Operation Mode",
-                  sequence: ["4"],
+                  sequence: [operationModePInput], // ["5"] operationModePInput
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "System 1 Return Temperature Probe",
-                  sequence: ["23"],
+                  sequence: [returnTemperatureInput], //["23"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "System 1 Supply Temperature Probe",
-                  sequence: ["10"],
+                  sequence: [supplyTemperatureInput], //["10"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "System 1 Temperature Setpoint",
-                  sequence: ["30"],
+                  sequence: [setPointTemperatureInput], //["30"]
                   enumeration: "values",
                 },
               },
@@ -1716,6 +1393,29 @@ function sendData() {
       },
     ],
   };
+
+  const formattedJson = JSON.stringify(requestData, null, 2);
+
+  // Create a Blob containing the formatted JSON data
+  const jsonBlob = new Blob([formattedJson], { type: "application/json" });
+
+  // Create a link element
+  const downloadLink = document.createElement("a");
+
+  // Set the download link attributes
+  downloadLink.href = URL.createObjectURL(jsonBlob);
+  downloadLink.download = "requestData.json";
+
+  // Append the link to the body
+  document.body.appendChild(downloadLink);
+
+  // Trigger a click on the link to start the download
+  downloadLink.click();
+
+  // Remove the link from the body
+  document.body.removeChild(downloadLink);
+
+  console.log("Data to be sent to API:", requestData);
 
   axios
     .post(apiUrl, requestData, {

@@ -20,13 +20,13 @@
     <p class="mt-20">Kamalesh</p>
   </section>
   <section class="ml-[17em] mt-4 container border-2 border-black rounded-md">
-    <div class="ml-4 mt-4">
+    <div class="mt-4 ml-4">
       <h2 class="logo text-[25px]">Common</h2>
       <div class="flex">
         <div class="w-1/2">
           <div class="flex">
             <h3 class="logo text-[20px] mt-3">Reefer Motion Status :</h3>
-            <div class="relative inline-block ml-3 mt-2 text-left">
+            <div class="relative inline-block mt-2 ml-3 text-left">
               <input
                 type="text"
                 class="px-4 py-2 rounded-2xl background text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
@@ -52,7 +52,7 @@
                     </g>
                 </svg>
               </div>
-              <div class="dropdown-content absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md">
+              <div class="absolute hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content">
                 <a
                   href="#"
                   class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
@@ -70,7 +70,7 @@
         <div class="w-1/2">
           <div class="flex">
             <h3 class="logo text-[20px] mt-3">Reefer Motion Status :</h3>
-            <div class="relative inline-block ml-3 mt-2 text-left">
+            <div class="relative inline-block mt-2 ml-3 text-left">
               <input
                 type="text"
                 class="px-4 py-2 rounded-2xl background1 text-[#6B9080] font-semibold text-center cursor-pointer focus:outline-none"
@@ -96,7 +96,7 @@
                     </g>
                 </svg>
               </div>
-              <div class="dropdown-content1 absolute hidden font-medium bg-white border-gray-300 py-2 mt-2 w-48 rounded-md shadow-md">
+              <div class="absolute hidden w-48 py-2 mt-2 font-medium bg-white border-gray-300 rounded-md shadow-md dropdown-content1">
                 <a
                   href="#"
                   class="block px-4 py-3 text-gray-800 hover:bg-gray-200"
@@ -118,3 +118,53 @@
   <script src="script.js" async defer></script>
 </body>
 </html>
+
+
+document.getElementById("primarySystem").value = "System 1";
+  document.getElementById("setPointTemperatureInput").value = "2";
+  document.getElementById("returnTemperatureInput").value = "2";
+  document.getElementById("supplyTemperatureInput").value = "3";
+
+  document.getElementById("setPointTemperatureInput1").value = "2";
+  document.getElementById("returnTemperatureInput1").value = "2";
+  document.getElementById("supplyTemperatureInput1").value = "3";
+
+  document.getElementById("reeferMotionStatusInput").value = "MOTION";
+  document.getElementById("reeferStatusInput").value = "ON";
+  document.getElementById("datepicker").value = "2023-04-01";
+  document.getElementById("alertStatusInput").value = "ON";
+  document.getElementById("batteryStatusInput").value = "ON";
+  document.getElementById("latitudeInput").value = "40.7128";
+  document.getElementById("longitudeInput").value = "-74.0060";
+
+  document.getElementById("tagsInput").value = "Tag1";
+  document.getElementById("commodityInput").value = "CHEMICAL";
+
+  document.getElementById("supplyTemperatureMaxInput").value = "25";
+  document.getElementById("supplyTemperatureMinInput").value = "20";
+  document.getElementById("supplyTemperatureMeanInput").value = "30";
+  document.getElementById("returnTemperatureMaxInput").value = "25";
+  document.getElementById("returnTemperatureMinInput").value = "20";
+  document.getElementById("returnTemperatureMeanInput").value = "30";
+
+  document.getElementById("ingressInput").value = "UDP";
+  document.getElementById("deviceModelInput").value = "Device";
+  document.getElementById("organizationNameInput").value = "Organization";
+  document.getElementById("deviceIDInput").value = "1010";
+  document.getElementById("batteryLevelInput").value = "8.0";
+  document.getElementById("accountNameInput").value = "Name";
+
+
+
+
+
+DONE 
+
+1) Ingress 
+2) Fuel Level 
+3) System 1 & 2 
+    setpoint 
+    supply 
+    return 
+    (without mode)
+4) Reported time 
