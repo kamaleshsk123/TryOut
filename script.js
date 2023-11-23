@@ -977,6 +977,25 @@ function sendData() {
 
   const fuelLevel = document.getElementById("fuelLevelInput").value;
 
+  const supplyTempMax = document.getElementById(
+    "supplyTemperatureMaxInput"
+  ).value;
+  const supplyTempMin = document.getElementById(
+    "supplyTemperatureMinInput"
+  ).value;
+  const supplyTempMean = document.getElementById(
+    "supplyTemperatureMeanInput"
+  ).value;
+  const returnTempMax = document.getElementById(
+    "returnTemperatureMaxInput"
+  ).value;
+  const returnTempMin = document.getElementById(
+    "returnTemperatureMinInput"
+  ).value;
+  const returnTempMean = document.getElementById(
+    "returnTemperatureMeanInput"
+  ).value;
+
   const timestamp = new Date().getTime();
   const latitude = document.getElementById("latitudeInput").value;
   const longitude = document.getElementById("longitudeInput").value;
@@ -985,12 +1004,7 @@ function sendData() {
   const ambientTemperatureInput = document.getElementById(
     "ambientTemperatureInput"
   ).value;
-  const operationModePInput = document.getElementById(
-    "operationModePInput"
-  ).value;
-  const operationModeSInput = document.getElementById(
-    "operationModeSInput"
-  ).value;
+
   const operationHoursPInput = document.getElementById(
     "operationHoursPInput"
   ).value;
@@ -1207,42 +1221,42 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "NTC1-MAX",
-                  sequence: ["-30"],
+                  sequence: [supplyTempMax], //["-30"],
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "NTC1-MIN",
-                  sequence: ["-40"],
+                  sequence: [supplyTempMin], //["-40"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "NTC1-MEAN",
-                  sequence: ["20"],
+                  sequence: [supplyTempMean], //["-20"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "NTC2-MAX",
-                  sequence: ["56"],
+                  sequence: [returnTempMax], //["56"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "NTC2-MIN",
-                  sequence: ["22"],
+                  sequence: [returnTempMin], //["22"]
                   enumeration: "values",
                 },
               },
               {
                 PointSensor: {
                   Name: "NTC2-MEAN",
-                  sequence: ["20"],
+                  sequence: [returnTempMean], //["20"]
                   enumeration: "values",
                 },
               },
