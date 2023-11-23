@@ -93,12 +93,10 @@ function toggleDropdown2() {
   dropdown2.classList.toggle("hidden");
 }
 
-// Function to handle option selection
 function selectOption2(option) {
   var dropdown2 = document.querySelector(".dropdown-content2");
   dropdown2.classList.add("hidden");
 
-  // Do something with the selected option, for example, update the input value
   var inputValue2 = option.textContent;
   document.querySelector(".background2").value = inputValue2;
 }
@@ -243,8 +241,6 @@ function selectOption5(option) {
   modeValue = option.getAttribute("data-mode");
 
   document.querySelector(".operation-p").value = inputValue5;
-
-  // Use modeValue outside the function.
 }
 
 document
@@ -676,53 +672,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// constant
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const testButton = document.getElementById("testButton");
-
-//   if (testButton) {
-//     testButton.addEventListener("click", async () => {
-//       try {
-//         // Collect data from Utilization section
-//         const constantData = {
-//           deviceId: document.getElementById("deviceid").value,
-//           gatewayId: document.getElementById("gatewayId").value,
-//           system: document.getElementById("system").value,
-//           esn: document.getElementById("esn").value,
-//           lasttxtime: document.getElementById("lasttxtime").value,
-//         };
-
-//         console.log("Sending Constant Data", constantData);
-
-//         const response = await fetch("http://localhost:3000/constant", {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({
-//             constantData,
-//           }),
-//         });
-
-//         if (response.ok) {
-//           console.log("Constant data saved successfully!");
-//         } else {
-//           console.error("Failed to save Constant data:", response.statusText);
-//         }
-//       } catch (error) {
-//         console.error("Error:", error);
-//       }
-//     });
-//   }
-// });
-
-// in constant data and time
+// for constant data and time
 
 const currentDate = new Date();
-const formattedDate = currentDate.toISOString(); // This will give you the date in the format "YYYY-MM-DDTHH:mm:ss.sssZ"
+const formattedDate = currentDate.toISOString();
 
-// Set the value of the input field
 document.getElementById("lasttxtime").value = formattedDate;
 
 // inventory1
@@ -925,6 +879,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // automate
 
 function automateData() {
+  document.getElementById("primarySystem").value = "System2";
   document.getElementById("setPointTemperatureInput").value = "25";
   document.getElementById("returnTemperatureInput").value = "20";
   document.getElementById("supplyTemperatureInput").value = "30";
@@ -934,11 +889,11 @@ function automateData() {
   document.getElementById("supplyTemperatureInput1").value = "30";
 
   document.getElementById("ambientTemperatureInput").value = "25";
-  document.getElementById("operationModePInput").value = "WAITING";
+  document.getElementById("operationModePInput").value = "Heating";
   document.getElementById("operationHoursPInput").value = "30";
 
   document.getElementById("ambientTemperatureInput").value = "25";
-  document.getElementById("operationModeSInput").value = "COOLING";
+  document.getElementById("operationModeSInput").value = "Cooling";
   document.getElementById("operationHoursSInput").value = "30";
 
   document.getElementById("reeferMotionStatusInput").value = "MOTION";
@@ -963,9 +918,9 @@ function automateData() {
   document.getElementById("GateWayIdInput").value = "ASSETLINK_NMR_262_001";
 
   document.getElementById("ingressInput").value = "UDP";
-  document.getElementById("deviceModelInput").value = "Device";
+  document.getElementById("deviceModelInput").value = "ANANTHI-NMR";
   document.getElementById("organizationNameInput").value = "Organization";
-  document.getElementById("deviceIDInput").value = "1010";
+  document.getElementById("deviceIDInput").value = "ANANTHI-NMR";
   document.getElementById("batteryLevelInput").value = "8.0";
   document.getElementById("accountNameInput").value = "Name";
 
@@ -1128,8 +1083,8 @@ function sendData() {
               },
               {
                 PointLoc: {
-                  Lat: "40.7128",
-                  Lon: "-74.0060",
+                  Lat: latitude,
+                  Lon: longitude,
                 },
               },
               {
@@ -1301,7 +1256,7 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "System 2 Operation hour",
-                  sequence: ["234"],
+                  sequence: [operationHoursSInput], //["234"]
                   enumeration: "values",
                 },
               },
@@ -1343,7 +1298,7 @@ function sendData() {
               {
                 PointSensor: {
                   Name: "System 1 Operation hour",
-                  sequence: ["611"],
+                  sequence: [operationHoursPInput], //["611"]
                   enumeration: "values",
                 },
               },
@@ -1407,20 +1362,20 @@ function sendData() {
 
   const formattedJson = JSON.stringify(requestData, null, 2);
 
-  // Create a Blob containing the formatted JSON data
+  // Blob for JSON data
   const jsonBlob = new Blob([formattedJson], { type: "application/json" });
 
-  // Create a link element
+  // Creating an element
   const downloadLink = document.createElement("a");
 
   // Set the download link attributes
   downloadLink.href = URL.createObjectURL(jsonBlob);
   downloadLink.download = "requestData.json";
 
-  // Append the link to the body
+  // Append to the body
   document.body.appendChild(downloadLink);
 
-  // Trigger a click on the link to start the download
+  // Trigger to download
   downloadLink.click();
 
   // Remove the link from the body
